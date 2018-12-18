@@ -10,7 +10,24 @@
 
         <div class="row">
           <grid-vue tamanho='4'>
-            Menu
+            <card-menu-vue>
+              <div class="row valign-wrapper">
+                <grid-vue tamanho='4'>
+                  <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </grid-vue>
+                <grid-vue tamanho='8'>
+                  <span class="black-text">
+                    <h5>Maria Silva</h5>
+                    Add the "circle" class to it to make it appear circular.
+                  </span>
+                </grid-vue>
+              </div>
+            </card-menu-vue>
+
+            <card-menu-vue>
+              <h3>Options</h3>
+            </card-menu-vue>
+
           </grid-vue>
           <grid-vue tamanho='8'>
             <router-view/>
@@ -36,6 +53,7 @@
 import NavbarVue from '@/components/layouts/NavbarVue'
 import FooterVue from '@/components/layouts/FooterVue'
 import GridVue from '@/components/layouts/GridVue'
+import CardMenuVue from '@/components/layouts/CardMenuVue'
 
 export default {
   name: 'App',
@@ -43,6 +61,7 @@ export default {
     NavbarVue,
     FooterVue,
     GridVue,
+    CardMenuVue,
   }
 }
 </script>
