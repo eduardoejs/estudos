@@ -43,5 +43,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 21: Organizando Navbar e links de navegação
  Aula 22: URLs amigáveis no Vue JS
     https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
-
+ Aula 23: Formularios de Login e Cadastro de usuarios
 
