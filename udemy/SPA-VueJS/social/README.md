@@ -58,7 +58,7 @@ composer update -> dentro da pasta webservice
   v) php artisan passport:install
   vi) colocar no model User:
     use Laravel\Passport\HasApiTokens;
-    use HasApiToken, Notifiable; // Threats
+    use HasApiTokens, Notifiable; // Threats
   vii) alterar o config/auth
     'api' => [
       'driver' => 'passport',
@@ -67,3 +67,5 @@ composer update -> dentro da pasta webservice
 
   Aula 26: Configurando Autenticacao Via Token
   Aula 27: Usando Postman
+    - criar rotas de login e cadastro
+  Aula 28: Criando Cadastro API
