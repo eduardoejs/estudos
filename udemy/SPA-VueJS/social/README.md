@@ -19,3 +19,9 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#Aulas
+ Aula 3: Criar projeto com vue cli
+ vue init webpack social
+
+ Aula 5: Diretorio do projeto - como é renderizado os componentes Vue - primeiro componente - Home
