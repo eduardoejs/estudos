@@ -40,4 +40,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 17 e 18: Componente para Publicar Conteudo
  Aula 19: Sistema de Templates
  Aula 20: Organizando com Slots
+ Aula 21: Organizando Navbar e links de navegação
 

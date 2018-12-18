@@ -2,7 +2,10 @@
   <span>
     <!--<img src="./assets/logo.png">-->
     <header>
-      <navbar-vue cor="" url="#" logo="Social"></navbar-vue>
+      <navbar-vue cor="" url="#/" logo="Social">
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/login">Login</a></li>
+      </navbar-vue>
     </header>
 
     <main>
