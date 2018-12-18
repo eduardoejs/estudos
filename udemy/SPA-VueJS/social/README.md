@@ -37,4 +37,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 13: Componente Menu Lateral
  Aula 14 e 15: Componente Conteudo - CardConteudoVue
  Aula 16: Componente Detalhe Conteudo
+ Aula 17 e 18: Componente para Publicar Conteudo
 

@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <span>
+
+    <publicar-conteudo-vue idTextarea="textarea1"></publicar-conteudo-vue>
+
     <card-conteudo-vue
-    perfil="https://materializecss.com/images/yuna.jpg"
-    nome="Maria Silva"
-    data="18/12/2018 09:45">
+      perfil="https://materializecss.com/images/yuna.jpg"
+      nome="Maria Silva"
+      data="18/12/2018 09:45">
 
       <card-conteudo-detalhe-vue
         imagem="https://materializecss.com/images/sample-1.jpg"
@@ -12,12 +15,15 @@
       </card-conteudo-detalhe-vue>
 
     </card-conteudo-vue>
-  </div>
+
+  </span>
 </template>
 
 <script>
+
 import CardConteudoVue from '@/components/social/CardConteudoVue'
 import CardConteudoDetalheVue from '@/components/social/CardConteudoDetalheVue'
+import PublicarConteudoVue from '@/components/social/PublicarConteudoVue'
 
 export default {
   name: 'Home',
@@ -28,7 +34,8 @@ export default {
   },
   components:{
     CardConteudoVue,
-    CardConteudoDetalheVue
+    CardConteudoDetalheVue,
+    PublicarConteudoVue
   }
 }
 </script>
