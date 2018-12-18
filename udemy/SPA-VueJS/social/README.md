@@ -20,6 +20,9 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+#Atualizar /Vendor do webservice
+composer update -> dentro da pasta webservice
+
 #Aulas
  Aula 3: Criar projeto com vue cli
  vue init webpack social
@@ -45,3 +48,19 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
  Aula 23: Formularios de Login e Cadastro de usuarios
  Aula 24: URL amigavel para Formularios de Login e Cadastro de usuarios
+ Aula 25: Instalando o Laravel - API
+  i) instalar laravel:
+     - composer create-project --prefer-dist laravel/laravel webservice "5.6.*"
+  ii) composer require laravel/passport
+  iii) configurar banco de dados ...
+     - editar .env
+  iv) php artisan migrate
+  v) php artisan passport: install
+  vi) colocar no model User:
+    use Laravel\Passport\HasApiTokens;
+    use HasApiToken, Notifiable; // Threats
+  vii) alterar o config/auth
+    'api' => [
+      'driver' => 'passport',
+      'provider' => 'users',
+    ],
