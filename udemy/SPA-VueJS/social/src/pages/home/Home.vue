@@ -1,5 +1,6 @@
 <template>
-  <span>
+
+  <site-template>
 
     <publicar-conteudo-vue idTextarea="textarea1"></publicar-conteudo-vue>
 
@@ -13,14 +14,15 @@
         titulo="Card Title Test"
         texto="I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.">
       </card-conteudo-detalhe-vue>
-
     </card-conteudo-vue>
 
-  </span>
+  </site-template>
+
 </template>
 
 <script>
 
+import SiteTemplate from '@/templates/SiteTemplate'
 import CardConteudoVue from '@/components/social/CardConteudoVue'
 import CardConteudoDetalheVue from '@/components/social/CardConteudoDetalheVue'
 import PublicarConteudoVue from '@/components/social/PublicarConteudoVue'
@@ -33,6 +35,7 @@ export default {
     }
   },
   components:{
+    SiteTemplate,
     CardConteudoVue,
     CardConteudoDetalheVue,
     PublicarConteudoVue
