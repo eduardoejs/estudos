@@ -10,11 +10,17 @@
 
         <div class="row">
           <grid-vue tamanho='6'>
-            <card-menu-vue> </card-menu-vue>
+
+            <card-menu-vue>
+
+              <slot name="menu-lateral" />
+
+            </card-menu-vue>
+
           </grid-vue>
           <grid-vue tamanho='6'>
 
-            <slot/>
+            <slot name="conteudo" />
 
           </grid-vue>
         </div>

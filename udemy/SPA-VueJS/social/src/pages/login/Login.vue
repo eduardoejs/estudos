@@ -1,11 +1,17 @@
 <template>
   <login-template>
 
-    <h2>Login</h2>
+    <span slot="menu-lateral">
+      <img src="http://www.springersource.com/wp-content/uploads/2018/02/9736582674_9e0db85da5_o-2.jpg" alt="social" class="responsive-img">
+    </span>
 
-    <input type="email" placeholder="E-Mail" value="">
-    <input type="password" placeholder="Senha" value="">
-    <button type="button" class="btn">Entrar</button>
+    <span slot="conteudo">
+      <h2>Login</h2>
+
+      <input type="email" placeholder="E-Mail" value="">
+      <input type="password" placeholder="Senha" value="">
+      <button type="button" class="btn">Entrar</button>
+    </span>
 
   </login-template>
 </template>
