@@ -41,4 +41,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 19: Sistema de Templates
  Aula 20: Organizando com Slots
  Aula 21: Organizando Navbar e links de navegação
+ Aula 22: URLs amigáveis no Vue JS
+    https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+
 

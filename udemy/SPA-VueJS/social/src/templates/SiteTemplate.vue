@@ -2,9 +2,9 @@
   <span>
     <!--<img src="./assets/logo.png">-->
     <header>
-      <navbar-vue cor="" url="#/" logo="Social">
-        <li><a href="#/">Home</a></li>
-        <li><a href="#/login">Login</a></li>
+      <navbar-vue cor="" url="/" logo="Social">
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/login">Login</router-link></li>
       </navbar-vue>
     </header>
 

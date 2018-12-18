@@ -49,6 +49,7 @@ import CardConteudoVue from '@/components/social/CardConteudoVue'
 import CardConteudoDetalheVue from '@/components/social/CardConteudoDetalheVue'
 import PublicarConteudoVue from '@/components/social/PublicarConteudoVue'
 import CardMenuVue from '@/components/layouts/CardMenuVue'
+import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'Home',
@@ -62,7 +63,8 @@ export default {
     CardConteudoVue,
     CardConteudoDetalheVue,
     PublicarConteudoVue,
-    CardMenuVue
+    CardMenuVue,
+    GridVue
   }
 }
 </script>
