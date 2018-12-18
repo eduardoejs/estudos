@@ -28,3 +28,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 6: Exemplo com script externo - Diretorio Static
  Aula 7: Codigo de produção - Diretorio dist
  npm run buid
+
+ Aula 8: Configurando Materialize
