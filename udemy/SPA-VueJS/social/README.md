@@ -30,3 +30,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  npm run buid
 
  Aula 8: Configurando Materialize
+
+ Aula 9: Configurando AdminLTE - Não configurei, pois é parecido com o Materialize
+
+ Aula 10: Componente NavBar
