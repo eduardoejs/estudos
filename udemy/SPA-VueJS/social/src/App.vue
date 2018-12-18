@@ -7,7 +7,15 @@
 
     <main>
       <div class="container">
-        <router-view/>
+
+        <div class="row">
+          <grid-vue tamanho='4'>
+            Menu
+          </grid-vue>
+          <grid-vue tamanho='8'>
+            <router-view/>
+          </grid-vue>
+        </div>
       </div>
     </main>
 
@@ -27,12 +35,14 @@
 
 import NavbarVue from '@/components/layouts/NavbarVue'
 import FooterVue from '@/components/layouts/FooterVue'
+import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'App',
   components:{
     NavbarVue,
     FooterVue,
+    GridVue,
   }
 }
 </script>
