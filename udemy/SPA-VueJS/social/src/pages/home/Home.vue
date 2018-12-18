@@ -5,14 +5,11 @@
     nome="Maria Silva"
     data="18/12/2018 09:45">
 
-    <div class="card-image">
-      <img src="https://materializecss.com/images/sample-1.jpg">
-      <span class="card-title">Card Title</span>
-    </div>
-    <div class="card-content">
-      <p>I am a very simple card. I am good at containing small bits of information.
-      I am convenient because I require little markup to use effectively.</p>
-    </div>
+      <card-conteudo-detalhe-vue
+        imagem="https://materializecss.com/images/sample-1.jpg"
+        titulo="Card Title Test"
+        texto="I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.">
+      </card-conteudo-detalhe-vue>
 
     </card-conteudo-vue>
   </div>
@@ -20,6 +17,7 @@
 
 <script>
 import CardConteudoVue from '@/components/social/CardConteudoVue'
+import CardConteudoDetalheVue from '@/components/social/CardConteudoDetalheVue'
 
 export default {
   name: 'Home',
@@ -29,7 +27,8 @@ export default {
     }
   },
   components:{
-    CardConteudoVue
+    CardConteudoVue,
+    CardConteudoDetalheVue
   }
 }
 </script>

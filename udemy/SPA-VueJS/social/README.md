@@ -36,4 +36,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 12: Sistema de Grid - Componente
  Aula 13: Componente Menu Lateral
  Aula 14 e 15: Componente Conteudo - CardConteudoVue
+ Aula 16: Componente Detalhe Conteudo
 
