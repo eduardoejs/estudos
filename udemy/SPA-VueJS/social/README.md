@@ -34,3 +34,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 9: Configurando AdminLTE - Não configurei, pois é parecido com o Materialize
 
  Aula 10: Componente NavBar
+
+ Aula 11: Componente Footer
