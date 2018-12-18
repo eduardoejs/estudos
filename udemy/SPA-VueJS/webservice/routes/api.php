@@ -22,9 +22,12 @@ Route::post('/cadastro', function (Request $request) {
         'password' => bcrypt($request->password),
     ]);
 
+    //criando e retornando token do usuario
+    $user->token = $user->createToken($user->email)->accessToken;
+
     return $user;
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/usuario', function (Request $request) {
     return $request->user();
 });

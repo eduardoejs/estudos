@@ -69,3 +69,5 @@ composer update -> dentro da pasta webservice
   Aula 27: Usando Postman
     - criar rotas de login e cadastro
   Aula 28: Criando Cadastro API
+  Aula 29: Retornando o token no cadastro
+  Aula 30:
