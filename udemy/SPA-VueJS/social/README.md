@@ -35,4 +35,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 11: Componente Footer
  Aula 12: Sistema de Grid - Componente
  Aula 13: Componente Menu Lateral
+ Aula 14 e 15: Componente Conteudo - CardConteudoVue
 
