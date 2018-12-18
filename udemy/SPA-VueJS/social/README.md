@@ -52,10 +52,10 @@ composer update -> dentro da pasta webservice
   i) instalar laravel:
      - composer create-project --prefer-dist laravel/laravel webservice "5.6.*"
   ii) composer require laravel/passport
-  iii) configurar banco de dados ...
+  iii) configurar banco de dados ... (database.sqlite)
      - editar .env
   iv) php artisan migrate
-  v) php artisan passport: install
+  v) php artisan passport:install
   vi) colocar no model User:
     use Laravel\Passport\HasApiTokens;
     use HasApiToken, Notifiable; // Threats
@@ -64,3 +64,6 @@ composer update -> dentro da pasta webservice
       'driver' => 'passport',
       'provider' => 'users',
     ],
+
+  Aula 26: Configurando Autenticacao Via Token
+  Aula 27: Usando Postman
