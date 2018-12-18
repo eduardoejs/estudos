@@ -7,11 +7,13 @@
 
     <span slot="conteudo">
 
-      <h2>Login</h2>
+      <h2>Cadastro</h2>
+      <input type="text" placeholder="Nome" value="">
       <input type="email" placeholder="E-Mail" value="">
       <input type="password" placeholder="Senha" value="">
-      <button class="btn">Entrar</button>
-      <router-link to="/cadastro" class="btn blue">Cadastre-se</router-link>
+      <input type="password" placeholder="Confirme sua senha" value="">
+      <button class="btn">Enviar</button>
+      <router-link to="/login" class="btn blue">Já tenho conta</router-link>
 
     </span>
 
@@ -24,7 +26,7 @@ import LoginTemplate from '@/templates/LoginTemplate'
 
 
 export default {
-  name: 'Login',
+  name: 'Cadastro',
   data () {
     return {
 

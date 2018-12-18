@@ -44,4 +44,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  Aula 22: URLs amigáveis no Vue JS
     https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
  Aula 23: Formularios de Login e Cadastro de usuarios
-
+ Aula 24: URL amigavel para Formularios de Login e Cadastro de usuarios
