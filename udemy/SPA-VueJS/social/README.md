@@ -70,4 +70,4 @@ composer update -> dentro da pasta webservice
     - criar rotas de login e cadastro
   Aula 28: Criando Cadastro API
   Aula 29: Retornando o token no cadastro
-  Aula 30:
+  Aula 30: Validacao do cadastro API
