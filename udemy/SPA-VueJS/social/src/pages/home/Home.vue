@@ -25,10 +25,10 @@
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1"></publicar-conteudo-vue>
 
-    <card-conteudo-vue
-      perfil="https://materializecss.com/images/yuna.jpg"
-      nome="Maria Silva"
-      data="18/12/2018 09:45">
+      <card-conteudo-vue
+        perfil="https://materializecss.com/images/yuna.jpg"
+        nome="Maria Silva"
+        data="18/12/2018 09:45">
 
         <card-conteudo-detalhe-vue
           imagem="https://materializecss.com/images/sample-1.jpg"

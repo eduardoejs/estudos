@@ -73,3 +73,14 @@ composer update -> dentro da pasta webservice
   Aula 30: Validacao do cadastro API
   Aula 31: Traduzindo erro de Validacao do cadastro API
   Aula 32: Metodo Login API
+  Aula 33: HTTP com Axios no VueJs
+    - npm install axios --save (https://alligator.io/vuejs/rest-api-axios/) - dentro do diretorio social
+    - import axios from 'axios';
+    - axios.post(`http://jsonplaceholder.typicode.com/posts`, {
+            body: this.postBody
+          })
+          .then(response => {})
+          .catch(e => {
+            this.errors.push(e)
+          })
+    -- no momento de testar localmente, será mostrado um erro. Instale um plugin no navegador para habilitar Croos- Origin (Allow-Control-Allow-Origin extension)
