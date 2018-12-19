@@ -51,16 +51,25 @@ export default {
         }else if(response.data.status == false){
           //se existir um status false no response.data -> Login não existe, inválido
           console.log('login inválido')
+          alert('Login inválido!')
 
         }else{
           //erros de validacao
           console.log('login erro de validacao')
+          let errors = '';
+
+          //converte para um objeto de valores o que vem do response.data
+          for(let error of Object.values(response.data)){
+            errors += error + " "
+          }
+          alert(errors)
 
         }
       })
       .catch(e => {
         //this.errors.push(e)
         console.log(e)
+        alert('Tente novamente mais tarde!')
       })
 
     }
