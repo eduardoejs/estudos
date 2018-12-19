@@ -84,3 +84,4 @@ composer update -> dentro da pasta webservice
             this.errors.push(e)
           })
     -- no momento de testar localmente, será mostrado um erro. Instale um plugin no navegador para habilitar Croos- Origin (Allow-Control-Allow-Origin extension)
+  Aula 34: Retornando Login

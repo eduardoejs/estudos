@@ -35,13 +35,28 @@ export default {
   },
   methods:{
     login(){
-      console.log('login ok');
+      console.log('login method');
       axios.post('http://127.0.0.1:8000/api/login', {
             email: this.usuario.email,
             password: this.usuario.password,
           })
       .then(response => {
+
         console.log(response)
+
+        if(response.data.token){
+          //se existir um token no response.data -> Login com sucesso
+          console.log('login com sucesso')
+
+        }else if(response.data.status == false){
+          //se existir um status false no response.data -> Login não existe, inválido
+          console.log('login inválido')
+
+        }else{
+          //erros de validacao
+          console.log('login erro de validacao')
+
+        }
       })
       .catch(e => {
         //this.errors.push(e)
