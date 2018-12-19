@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,26 @@ Route::post('/cadastro', function (Request $request) {
     $user->token = $user->createToken($user->email)->accessToken;
 
     return $user;
+});
+
+Route::post('/login', function (Request $request) {
+
+    $validacao = Validator::make($request->all(), [
+        'email' => 'required|string|email',
+        'password' => 'required|string',
+    ]);
+
+    if($validacao->fails()){
+        return $validacao->errors();
+    }
+
+    if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        $user = auth()->user();
+        $user->token = $user->createToken($user->email)->accessToken;
+        return $user;
+    }
+
+    return ['status' => false];
 });
 
 Route::middleware('auth:api')->get('/usuario', function (Request $request) {
