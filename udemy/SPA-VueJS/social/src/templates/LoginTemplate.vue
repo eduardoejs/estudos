@@ -3,7 +3,6 @@
     <!--<img src="./assets/logo.png">-->
     <header>
       <navbar-vue cor="" url="/" logo="Social">
-        <li><router-link to="/">Home</router-link></li>
         <li v-if="!usuario"><router-link to="/login">Login</router-link></li>
         <li v-if="!usuario"><router-link to="/cadastro">Cadastre-se</router-link></li>
         <li v-if="usuario"><router-link to="/perfil">{{usuario.name}}</router-link></li>
