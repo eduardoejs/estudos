@@ -48,6 +48,7 @@ export default {
           //se existir um token no response.data -> Login com sucesso
           console.log('login com sucesso')
           sessionStorage.setItem('usuario',JSON.stringify(response.data))
+          this.$router.push('/');
 
         }else if(response.data.status == false){
           //se existir um status false no response.data -> Login não existe, inválido

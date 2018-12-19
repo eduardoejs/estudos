@@ -70,6 +70,7 @@ export default {
     let usuario = sessionStorage.getItem('usuario')
     if(usuario){
       this.usuario = JSON.parse(usuario)
+      this.$router.push('/')
     }
   },
   methods:{
