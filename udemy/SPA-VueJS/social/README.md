@@ -71,3 +71,4 @@ composer update -> dentro da pasta webservice
   Aula 28: Criando Cadastro API
   Aula 29: Retornando o token no cadastro
   Aula 30: Validacao do cadastro API
+  Aula 31: Traduzindo erro de Validacao do cadastro API
