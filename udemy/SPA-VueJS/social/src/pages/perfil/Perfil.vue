@@ -3,7 +3,7 @@
 
     <span slot="menu-lateral">
       <card-menu-vue>
-        <img src="http://www.springersource.com/wp-content/uploads/2018/02/9736582674_9e0db85da5_o-2.jpg" alt="social" class="responsive-img">
+        <img :src="usuario.imagem" :alt="usuario.name" class="responsive-img">
         </card-menu-vue>
     </span>
 
@@ -74,10 +74,10 @@ export default {
 
       reader.readAsDataURL(arquivo[0]);
 
-      console.log(this.imagem)
+      //console.log(this.imagem)
     },
     perfil(){
-      console.log('perfil method');
+      //console.log('perfil method');
       axios.put('http://127.0.0.1:8000/api/perfil', {
             name: this.name,
             email: this.email,
@@ -92,7 +92,8 @@ export default {
         if(response.data.token){
           //se existir um token no response.data -> Login com sucesso
           console.log(response.data)
-          sessionStorage.setItem('usuario',JSON.stringify(response.data))
+          this.usuario = response.data
+          sessionStorage.setItem('usuario',JSON.stringify(this.usuario))
           alert('Perfil atualizado!')
 
         }else{

@@ -94,8 +94,38 @@ Route::middleware('auth:api')->put('/perfil', function (Request $request) {
     $user->name = $request->name;
     $user->email = $request->email;
 
+    if(isset($request->imagem)){
+        $time = time();
+        $diretorioPai = 'perfils';
+        $diretorioImagem = $diretorioPai.DIRECTORY_SEPARATOR.'perfil_id_'.$user->id;
+        $ext = substr($request->imagem, 11, strpos($request->imagem, ';') - 11);
+        //return [$ext];
+
+        $urlImagem = $diretorioImagem.DIRECTORY_SEPARATOR.$time.'.'.$ext;
+
+        $file = str_replace('data:image/'.$ext.';base64,', '', $request->imagem);
+        //return [$file];
+
+        //transformando o base64 em arquivo
+        $file = base64_decode($file);
+
+        if(!file_exists($diretorioPai)){
+            mkdir($diretorioPai, 0700);
+        }
+
+        if(!file_exists($diretorioImagem)){
+            mkdir($diretorioImagem, 0700);
+        }
+
+        //persistindo 0 arquivo no servidor
+        file_put_contents($urlImagem, $file);
+
+        $user->imagem = $urlImagem;
+    }
+
     $user->save();
 
+    $user->imagem = asset($user->imagem);
     $user->token = $user->createToken($user->email)->accessToken;
     return $user;
 });
