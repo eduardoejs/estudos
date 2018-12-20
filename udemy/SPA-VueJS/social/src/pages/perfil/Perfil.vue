@@ -2,18 +2,28 @@
   <site-template>
 
     <span slot="menu-lateral">
-      <img src="http://www.springersource.com/wp-content/uploads/2018/02/9736582674_9e0db85da5_o-2.jpg" alt="social" class="responsive-img">
+      <card-menu-vue>
+        <img src="http://www.springersource.com/wp-content/uploads/2018/02/9736582674_9e0db85da5_o-2.jpg" alt="social" class="responsive-img">
+        </card-menu-vue>
     </span>
 
     <span slot="conteudo">
 
       <h2>Perfil do usuário</h2>
-      <input type="text" placeholder="Nome" v-model="usuario.name">
-      <input type="email" placeholder="E-Mail" v-model="usuario.email">
-      <input type="password" placeholder="Senha" v-model="usuario.password">
-      <input type="password" placeholder="Confirme sua senha" v-model="usuario.password_confirmation">
-      <button class="btn" v-on:click="cadastrar()">Enviar</button>
-      <router-link to="/login" class="btn blue">Já tenho conta</router-link>
+      <input type="text" placeholder="Nome" v-model="name">
+      <input type="email" placeholder="E-Mail" v-model="email">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Imagem</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <input type="password" placeholder="Senha" v-model="password">
+      <input type="password" placeholder="Confirme sua senha" v-model="password_confirmation">
+      <button class="btn" v-on:click="perfil()">Atualizar</button>
 
     </span>
 
@@ -23,22 +33,36 @@
 <script>
 
 import SiteTemplate from '@/templates/SiteTemplate'
+import CardMenuVue from '@/components/layouts/CardMenuVue'
 import axios from 'axios';
 
 export default {
   name: 'Perfil',
   data () {
     return {
-      usuario:{email:'', password:'', name:'', password_confirmation:''}
+      usuario:false,
+      name:'',
+      email:'',
+      password:'',
+      password_confirmation:''
+    }
+  },
+  created(){
+    let usuario = sessionStorage.getItem('usuario')
+    if(usuario){
+      this.usuario = JSON.parse(usuario)
+      this.name = this.usuario.name
+      this.email = this.usuario.email
     }
   },
   components:{
-    SiteTemplate
+    SiteTemplate,
+    CardMenuVue
   },
   methods:{
-    cadastrar(){
+    perfil(){
       console.log('cadastro method');
-      axios.post('http://127.0.0.1:8000/api/cadastro', {
+      axios.post('http://127.0.0.1:8000/api/perfil', {
             name: this.usuario.name,
             email: this.usuario.email,
             password: this.usuario.password,
