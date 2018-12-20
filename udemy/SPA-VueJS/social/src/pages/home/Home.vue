@@ -6,20 +6,21 @@
       <card-menu-vue>
       <div class="row valign-wrapper">
         <grid-vue tamanho='4'>
-          <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+          <img :src="usuario.imagem" :alt="usuario.name" class="circle responsive-img"> <!-- notice the "circle" class -->
         </grid-vue>
         <grid-vue tamanho='8'>
           <span class="black-text">
-            <h5>Maria Silva</h5>
+            <h5>{{usuario.name}}</h5>
             Add the "circle" class to it to make it appear circular.
           </span>
         </grid-vue>
       </div>
       </card-menu-vue>
 
-      <card-menu-vue>
+      <!--<card-menu-vue>
         <h3>Options</h3>
       </card-menu-vue>
+      -->
     </span>
 
     <span slot="conteudo">
@@ -55,7 +56,13 @@ export default {
   name: 'Home',
   data () {
     return {
-
+      usuario:false
+    }
+  },
+  created(){
+    let usuario = sessionStorage.getItem('usuario')
+    if(usuario){
+      this.usuario = JSON.parse(usuario)
     }
   },
   components:{

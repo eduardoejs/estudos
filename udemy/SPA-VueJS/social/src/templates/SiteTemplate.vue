@@ -19,7 +19,9 @@
             <slot name="menu-lateral" />
 
             <card-menu-vue>
-              <h5>Fix Template</h5>
+              <h5>Amigos</h5>
+              <li>Vitor</li>
+              <li>Daiane</li>
             </card-menu-vue>
 
           </grid-vue>

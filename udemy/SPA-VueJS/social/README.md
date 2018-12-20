@@ -99,3 +99,5 @@ composer update -> dentro da pasta webservice
   Aula 45: Enviando imagem para o servidor
   Aula 46: Deletando imagens antigas
   Aula 47: Validação de imagem Base64
+  Aula 47: Validação de imagem Base64
+  Aula 48: Dados do usuario na Tela Principal
