@@ -89,3 +89,4 @@ composer update -> dentro da pasta webservice
   Aula 36: Preparando sistema login - Parte I
   Aula 37: Preparando sistema login - Parte II
   Aula 38: Implementando o Cadastro
+  Aula 39: Tela de Perfil parte I
