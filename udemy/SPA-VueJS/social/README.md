@@ -93,3 +93,5 @@ composer update -> dentro da pasta webservice
   Aula 40: Tela de Perfil parte II
   Aula 41: Tela de Perfil parte III
   Aula 42: Atualizando dados do perfil
+  Aula 43: Adicionando atributo imagem no perfil
+    php artisan make:migration add_imagem_table_users --table=users
