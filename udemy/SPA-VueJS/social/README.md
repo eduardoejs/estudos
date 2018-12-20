@@ -97,3 +97,4 @@ composer update -> dentro da pasta webservice
     php artisan make:migration add_imagem_table_users --table=users
   Aula 44: Preparando o campo imagem no Vue Js
   Aula 45: Enviando imagem para o servidor
+  Aula 46: Deletando imagens antigas

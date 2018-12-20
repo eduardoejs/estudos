@@ -54,6 +54,7 @@ Route::post('/login', function (Request $request) {
 
     if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
         $user = auth()->user();
+        $user->imagem = asset($user->imagem); //retorno a url da imagem com o dominio do servidor
         $user->token = $user->createToken($user->email)->accessToken;
         return $user;
     }
@@ -113,19 +114,24 @@ Route::middleware('auth:api')->put('/perfil', function (Request $request) {
             mkdir($diretorioPai, 0700);
         }
 
+        if($user->imagem){
+            if(file_exists($user->imagem)){
+                unlink($user->imagem);
+            }
+        }
+
         if(!file_exists($diretorioImagem)){
             mkdir($diretorioImagem, 0700);
         }
 
         //persistindo 0 arquivo no servidor
         file_put_contents($urlImagem, $file);
-
         $user->imagem = $urlImagem;
     }
 
     $user->save();
 
-    $user->imagem = asset($user->imagem);
+    $user->imagem = asset($user->imagem);//retorno a url da imagem com o dominio do servidor
     $user->token = $user->createToken($user->email)->accessToken;
     return $user;
 });

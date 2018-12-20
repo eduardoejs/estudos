@@ -54,6 +54,7 @@ export default {
       this.usuario = JSON.parse(usuario)
       this.name = this.usuario.name
       this.email = this.usuario.email
+      this.imagem = this.usuario.imagem
     }
   },
   components:{
