@@ -61,40 +61,20 @@ export default {
   },
   methods:{
     perfil(){
-      console.log('cadastro method');
-      axios.post('http://127.0.0.1:8000/api/perfil', {
+      console.log('perfil method');
+      axios.put('http://127.0.0.1:8000/api/perfil', {
             name: this.usuario.name,
             email: this.usuario.email,
             password: this.usuario.password,
             password_confirmation: this.usuario.password_confirmation,
-          })
+          }, {"headers":{"authorization":"Bearer "+this.usuario.token}})
       .then(response => {
 
         //console.log(response)
 
-        if(response.data.token){
-          //se existir um token no response.data -> Login com sucesso
-          console.log('cadastro com sucesso')
-          sessionStorage.setItem('usuario',JSON.stringify(response.data))
-          this.$router.push('/');
+        //se existir um token no response.data -> Login com sucesso
+        console.log(response.data)
 
-        }else if(response.data.status == false){
-          //se existir um status false no response.data -> cadastro inválido
-          console.log('cadastro inválido')
-          alert('Erro ao cadastrar!')
-
-        }else{
-          //erros de validacao
-          console.log('cadastro erro de validacao')
-          let errors = '';
-
-          //converte para um objeto de valores o que vem do response.data
-          for(let error of Object.values(response.data)){
-            errors += error + " "
-          }
-          alert(errors)
-
-        }
       })
       .catch(e => {
         //this.errors.push(e)
