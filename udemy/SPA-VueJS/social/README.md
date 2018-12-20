@@ -98,3 +98,4 @@ composer update -> dentro da pasta webservice
   Aula 44: Preparando o campo imagem no Vue Js
   Aula 45: Enviando imagem para o servidor
   Aula 46: Deletando imagens antigas
+  Aula 47: Validação de imagem Base64
