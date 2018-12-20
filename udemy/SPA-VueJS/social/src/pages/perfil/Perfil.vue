@@ -63,18 +63,33 @@ export default {
     perfil(){
       console.log('perfil method');
       axios.put('http://127.0.0.1:8000/api/perfil', {
-            name: this.usuario.name,
-            email: this.usuario.email,
-            password: this.usuario.password,
-            password_confirmation: this.usuario.password_confirmation,
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password_confirmation,
           }, {"headers":{"authorization":"Bearer "+this.usuario.token}})
       .then(response => {
 
         //console.log(response)
 
-        //se existir um token no response.data -> Login com sucesso
-        console.log(response.data)
+        if(response.data.token){
+          //se existir um token no response.data -> Login com sucesso
+          console.log(response.data)
+          sessionStorage.setItem('usuario',JSON.stringify(response.data))
+          alert('Perfil atualizado!')
 
+        }else{
+          //erros de validacao
+          console.log('erro de validacao')
+          let errors = '';
+
+          //converte para um objeto de valores o que vem do response.data
+          for(let error of Object.values(response.data)){
+            errors += error + " "
+          }
+          alert(errors)
+
+        }
       })
       .catch(e => {
         //this.errors.push(e)

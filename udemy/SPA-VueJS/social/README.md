@@ -92,3 +92,4 @@ composer update -> dentro da pasta webservice
   Aula 39: Tela de Perfil parte I
   Aula 40: Tela de Perfil parte II
   Aula 41: Tela de Perfil parte III
+  Aula 42: Atualizando dados do perfil
