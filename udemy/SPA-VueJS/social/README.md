@@ -101,3 +101,5 @@ composer update -> dentro da pasta webservice
   Aula 47: Validação de imagem Base64
   Aula 47: Validação de imagem Base64
   Aula 48: Dados do usuario na Tela Principal
+  Aula 49: Imagem padrão e criando um Controller
+  Aula 50: Passando a logica para Controller

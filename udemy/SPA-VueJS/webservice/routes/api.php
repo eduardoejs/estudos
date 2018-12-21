@@ -29,38 +29,23 @@ Route::post('/cadastro', function (Request $request) {
         return $validacao->errors();
     }
 
+    $imagem = '/perfils/default-profile.jpg';
+
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
+        'imagem' => $imagem
     ]);
 
     //criando e retornando token do usuario
     $user->token = $user->createToken($user->email)->accessToken;
+    $user->imagem = asset($user->imagem);
 
     return $user;
 });
 
-Route::post('/login', function (Request $request) {
-
-    $validacao = Validator::make($request->all(), [
-        'email' => 'required|string|email',
-        'password' => 'required|string',
-    ]);
-
-    if($validacao->fails()){
-        return $validacao->errors();
-    }
-
-    if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-        $user = auth()->user();
-        $user->imagem = asset($user->imagem); //retorno a url da imagem com o dominio do servidor
-        $user->token = $user->createToken($user->email)->accessToken;
-        return $user;
-    }
-
-    return ['status' => false];
-});
+Route::post('/login', "UsuarioController@login");
 
 Route::middleware('auth:api')->get('/usuario', function (Request $request) {
     return $request->user();
