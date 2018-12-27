@@ -43,7 +43,7 @@ class UsuarioController extends Controller
             return $validacao->errors();
         }
 
-        $imagem = '/perfils/default-profile.jpg';
+        $imagem = '/imagens/default-profile.jpg';
 
         $user = User::create([
             'name' => $request->name,
