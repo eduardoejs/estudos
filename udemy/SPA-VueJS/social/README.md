@@ -106,3 +106,4 @@ composer update -> dentro da pasta webservice
   Aula 51: Configurando o CORS no Laravel
   Aula 52: Modelando o banco de dados
   Aula 53: Definindo as migracoes
+  Aula 54: Definindo os relacionamentos
