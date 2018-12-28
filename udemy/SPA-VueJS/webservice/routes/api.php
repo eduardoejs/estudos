@@ -23,6 +23,7 @@ Route::middleware('auth:api')->put('/perfil', 'UsuarioController@perfil');
 
 Route::get('/testes', function(){
     $user = User::find(1);
+    $user2 = User::find(2);
     
     /*$user->conteudos()->create([
         'titulo' => 'Conteudo Titulo 3',
@@ -30,6 +31,13 @@ Route::get('/testes', function(){
         'imagem' => 'url-image',
         'link' => 'http://abc.com',
         'data' => '2018-12-28'
-        ]);*/
-    return $user->conteudos;
+        ]);
+    return $user->conteudos;*/
+    
+    //add amigos
+    //$user->amigos()->attach($user2);
+    //$user->amigos()->detach($user2);
+    //$user->amigos()->toggle($user2);
+    //return $user->amigos;
+
 });
