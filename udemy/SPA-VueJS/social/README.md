@@ -103,3 +103,4 @@ composer update -> dentro da pasta webservice
   Aula 48: Dados do usuario na Tela Principal
   Aula 49: Imagem padrão e criando um Controller
   Aula 50: Passando a logica para Controller
+  Aula 51: Configurando o CORS no Laravel
