@@ -107,3 +107,4 @@ composer update -> dentro da pasta webservice
   Aula 52: Modelando o banco de dados
   Aula 53: Definindo as migracoes
   Aula 54: Definindo os relacionamentos
+  Aula 55: Modelo de como Adicionar Conteudos
