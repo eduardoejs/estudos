@@ -47,28 +47,27 @@ export default {
 
         //console.log(response)
 
-        if(response.data.token){
+        if(response.data.status){
           //se existir um token no response.data -> Login com sucesso
           console.log('cadastro com sucesso')
-          sessionStorage.setItem('usuario',JSON.stringify(response.data))
+          sessionStorage.setItem('usuario',JSON.stringify(response.data.usuario))
           this.$router.push('/');
 
-        }else if(response.data.status == false){
-          //se existir um status false no response.data -> cadastro inválido
-          console.log('cadastro inválido')
-          alert('Erro ao cadastrar!')
-
-        }else{
+        }else if(response.data.status == false && response.data.validacao){
           //erros de validacao
           console.log('cadastro erro de validacao')
           let errors = '';
 
           //converte para um objeto de valores o que vem do response.data
-          for(let error of Object.values(response.data)){
+          for(let error of Object.values(response.data.erros)){
             errors += error + " "
           }
           alert(errors)
 
+        }else{
+          //se existir um status false no response.data -> cadastro inválido
+          console.log('cadastro inválido')
+          alert('Erro ao cadastrar!')
         }
       })
       .catch(e => {

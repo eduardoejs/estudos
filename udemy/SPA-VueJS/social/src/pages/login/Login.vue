@@ -43,28 +43,25 @@ export default {
 
         //console.log(response)
 
-        if(response.data.token){
+        if(response.data.status){
           //se existir um token no response.data -> Login com sucesso
           console.log('login com sucesso')
-          sessionStorage.setItem('usuario',JSON.stringify(response.data))
+          sessionStorage.setItem('usuario',JSON.stringify(response.data.usuario))
           this.$router.push('/');
 
-        }else if(response.data.status == false){
-          //se existir um status false no response.data -> Login não existe, inválido
-          console.log('login inválido')
-          alert('Login inválido!')
-
-        }else{
-          //erros de validacao
+        }else if(response.data.status == false && response.data.validacao){
           console.log('login erro de validacao')
           let errors = '';
 
           //converte para um objeto de valores o que vem do response.data
-          for(let error of Object.values(response.data)){
+          for(let error of Object.values(response.data.erros)){
             errors += error + " "
           }
           alert(errors)
-
+        }else{
+          //se existir um status false no response.data -> Login não existe, inválido
+          console.log('login inválido')
+          alert('Login inválido!')
         }
       })
       .catch(e => {

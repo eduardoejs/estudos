@@ -88,24 +88,23 @@ export default {
 
         //console.log(response)
 
-        if(response.data.token){
+        if(response.data.status){
           //se existir um token no response.data -> Login com sucesso
           console.log(response.data)
-          this.usuario = response.data
+          this.usuario = response.data.usuario
           sessionStorage.setItem('usuario',JSON.stringify(this.usuario))
           alert('Perfil atualizado!')
 
-        }else{
+        }else if(response.data.status == false && response.data.validacao){
           //erros de validacao
-          console.log('erro de validacao')
+          //console.log('erro de validacao')
           let errors = '';
 
           //converte para um objeto de valores o que vem do response.data
-          for(let error of Object.values(response.data)){
+          for(let error of Object.values(response.data.erros)){
             errors += error + " "
           }
           alert(errors)
-
         }
       })
       .catch(e => {
@@ -113,7 +112,6 @@ export default {
         console.log(e)
         alert('Tente novamente mais tarde!')
       })
-
     }
   }
 }
