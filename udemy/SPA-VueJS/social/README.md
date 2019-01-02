@@ -109,3 +109,4 @@ composer update -> dentro da pasta webservice
   Aula 54: Definindo os relacionamentos
   Aula 55: Modelo de como Adicionar Conteudos
   Aula 56: Modelo de como Adicionar Amigos
+  Aula 57: Modelo de como Adicionar Curtidas e Comentários

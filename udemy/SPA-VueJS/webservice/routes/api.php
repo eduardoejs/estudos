@@ -22,9 +22,9 @@ Route::middleware('auth:api')->put('/perfil', 'UsuarioController@perfil');
 
 
 Route::get('/testes', function(){
-    $user = User::find(1);
-    $user2 = User::find(2);
-    
+    //$user = User::find(1);
+    //$user2 = User::find(2);
+
     /*$user->conteudos()->create([
         'titulo' => 'Conteudo Titulo 3',
         'texto' => 'Aqui é o conteudo do Titulo 3',
@@ -33,11 +33,32 @@ Route::get('/testes', function(){
         'data' => '2018-12-28'
         ]);
     return $user->conteudos;*/
-    
+
     //add amigos
     //$user->amigos()->attach($user2);
     //$user->amigos()->detach($user2);
     //$user->amigos()->toggle($user2);
     //return $user->amigos;
+
+    //add curtidas
+    //$conteudo = Conteudo::find(1);
+    //$user->curtidas()->toggle($conteudo->id);
+    //return $conteudo->curtidas()->count();//retorna um valor numerico
+    //return $conteudo->curtidas;
+
+    //add comentarios
+    /*$conteudo = Conteudo::find(1);
+    $user->comentarios()->create([
+        'conteudo_id' => $conteudo->id,
+        'texto' => 'Show de bola!',
+        'data' => date('Y-m-d')
+        ]);
+
+    $user2->comentarios()->create([
+        'conteudo_id' => $conteudo->id,
+        'texto' => 'Não gostei!',
+        'data' => date('Y-m-d')
+        ]);
+    return $conteudo->comentarios;*/
 
 });
