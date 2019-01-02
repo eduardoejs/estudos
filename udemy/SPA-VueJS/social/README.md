@@ -110,3 +110,4 @@ composer update -> dentro da pasta webservice
   Aula 55: Modelo de como Adicionar Conteudos
   Aula 56: Modelo de como Adicionar Amigos
   Aula 57: Modelo de como Adicionar Curtidas e Comentários
+  Aula 58: Definindo instância para Axios e URL da API

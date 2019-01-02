@@ -34,7 +34,6 @@
 
 import SiteTemplate from '@/templates/SiteTemplate'
 import CardMenuVue from '@/components/layouts/CardMenuVue'
-import axios from 'axios';
 
 export default {
   name: 'Perfil',
@@ -78,7 +77,7 @@ export default {
     },
     perfil(){
       //console.log('perfil method');
-      axios.put('http://127.0.0.1:8000/api/perfil', {
+        this.$http.put(this.$urlAPI + 'perfil', {
             name: this.name,
             email: this.email,
             imagem: this.imagem,

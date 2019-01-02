@@ -21,7 +21,6 @@
 <script>
 
 import LoginTemplate from '@/templates/LoginTemplate'
-import axios from 'axios';
 
 export default {
   name: 'Login',
@@ -36,7 +35,7 @@ export default {
   methods:{
     login(){
       console.log('login method');
-      axios.post('http://127.0.0.1:8000/api/login', {
+      this.$http.post(this.$urlAPI + 'login', {
             email: this.usuario.email,
             password: this.usuario.password,
           })
