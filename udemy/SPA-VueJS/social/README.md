@@ -113,3 +113,5 @@ composer update -> dentro da pasta webservice
   Aula 58: Definindo instância para Axios e URL da API
   Aula 59: Padronizando os retornos da API
   Aula 60: Formulario para Publicar Conteudo
+  Aula 61: Adicionar Conteudo Parte I
+  Aula 62: Adicionar Conteudo Parte II

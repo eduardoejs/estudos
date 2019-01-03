@@ -7,9 +7,9 @@
     <input v-if="conteudo.titulo && conteudo.texto" placeholder="URL da Imagem" type="text" v-model="conteudo.imagem">
     <label :for="idTextarea">O que está acontecendo?</label>
   </grid-vue>
-  <p v-if="conteudo.titulo && conteudo.texto">
+  <p v-if="conteudo.titulo && conteudo.texto" class="right-align">
     <!-- Um componente herda uma div -->
-    <grid-vue class="btn waves-effect waves-light" tamanho="2 offset-s10">Publicar</grid-vue>
+    <button v-on:click="adicionaConteudo()" class="btn waves-effect waves-light">Publicar</button>
   </p>
 </div>
 </template>
@@ -27,6 +27,12 @@ export default {
   },
   components:{
     GridVue
+  },
+  methods:{
+    adicionaConteudo(){
+      console.log(this.conteudo)
+      this.$http.post(this.$urlAPI + 'conteudo/adicionar', this.conteudo, {})
+    }
   }
 }
 </script>
