@@ -115,3 +115,4 @@ composer update -> dentro da pasta webservice
   Aula 60: Formulario para Publicar Conteudo
   Aula 61: Adicionar Conteudo Parte I
   Aula 62: Adicionar Conteudo Parte II
+  Aula 63: Introdução ao Vuex
