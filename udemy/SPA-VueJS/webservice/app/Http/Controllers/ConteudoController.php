@@ -11,7 +11,7 @@ class ConteudoController extends Controller
     {
         $user = $request->user();
 
-        //validacao
+        //validacao aqui
 
         $conteudo = new Conteudo();
         $conteudo->titulo = $request->titulo;

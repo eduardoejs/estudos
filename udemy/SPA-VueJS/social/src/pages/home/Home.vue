@@ -24,7 +24,7 @@
     </span>
 
     <span slot="conteudo">
-      <publicar-conteudo-vue idTextarea="textarea1"></publicar-conteudo-vue>
+      <publicar-conteudo-vue idTextarea="textarea1" :usuario="usuario" />
 
       <card-conteudo-vue
         perfil="https://materializecss.com/images/yuna.jpg"
