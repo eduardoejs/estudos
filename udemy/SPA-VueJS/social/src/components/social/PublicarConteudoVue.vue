@@ -1,10 +1,13 @@
 <template>
 <div class="row">
   <grid-vue class="input-field" tamanho="12">
-    <textarea :id="idTextarea" v-model="conteudo" class="materialize-textarea"></textarea>
+    <input type="text" v-model="conteudo.titulo">
+    <textarea v-if="conteudo.titulo" placeholder="Conteúdo" :id="idTextarea" v-model="conteudo.texto" class="materialize-textarea"></textarea>
+    <input v-if="conteudo.titulo && conteudo.texto" placeholder="Link" type="text" v-model="conteudo.link">
+    <input v-if="conteudo.titulo && conteudo.texto" placeholder="URL da Imagem" type="text" v-model="conteudo.imagem">
     <label :for="idTextarea">O que está acontecendo?</label>
   </grid-vue>
-  <p v-if="conteudo">
+  <p v-if="conteudo.titulo && conteudo.texto">
     <!-- Um componente herda uma div -->
     <grid-vue class="btn waves-effect waves-light" tamanho="2 offset-s10">Publicar</grid-vue>
   </p>
@@ -19,7 +22,7 @@ export default {
   props: ['idTextarea'],
   data () {
     return {
-      conteudo:''
+      conteudo:{titulo:'', texto:'', link:'', imagem:''}
     }
   },
   components:{
