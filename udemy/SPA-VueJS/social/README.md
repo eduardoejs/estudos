@@ -116,3 +116,5 @@ composer update -> dentro da pasta webservice
   Aula 61: Adicionar Conteudo Parte I
   Aula 62: Adicionar Conteudo Parte II
   Aula 63: Introdução ao Vuex
+    npm install vuex --save
+  Aula 64: Centralizando o Sistema de Login

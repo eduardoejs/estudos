@@ -50,6 +50,7 @@ export default {
         if(response.data.status){
           //se existir um token no response.data -> Login com sucesso
           console.log('cadastro com sucesso')
+          this.$store.commit('setUsuario',response.data.usuario)
           sessionStorage.setItem('usuario',JSON.stringify(response.data.usuario))
           this.$router.push('/');
 

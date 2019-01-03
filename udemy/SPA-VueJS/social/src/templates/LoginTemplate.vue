@@ -66,16 +66,10 @@ export default {
   },
   created(){
     console.log('created()')
-    let usuario = sessionStorage.getItem('usuario')
+    let usuario = this.$store.getters.getUsuario
     if(usuario){
-      this.usuario = JSON.parse(usuario)
+      this.usuario = this.$store.getters.getUsuario
       this.$router.push('/')
-    }
-  },
-  methods:{
-    logout(){
-      sessionStorage.clear();
-      this.usuario = false;
     }
   }
 }
