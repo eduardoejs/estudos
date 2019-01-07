@@ -22,7 +22,10 @@ class ConteudoController extends Controller
 
         $user->conteudos()->save($conteudo);
 
-        return ['status' => true, 'conteudos' => $user->conteudos];
+        //return ['status' => true, 'conteudos' => $user->conteudos];
+
+        $conteudos = Conteudo::with('user')->orderBy('data', 'DESC')->paginate(5);
+        return ['status' => true, 'conteudos' => $conteudos];
     }
 
     public function listar(Request $request)

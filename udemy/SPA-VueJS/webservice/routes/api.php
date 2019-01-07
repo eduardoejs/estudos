@@ -27,6 +27,11 @@ Route::get('/testes', function(){
     //$user = User::find(1);
     //$user2 = User::find(2);
 
+    /*$conteudos = Conteudo::all();
+    foreach ($conteudos as $key => $value) {
+        $value->delete();
+    } */
+
     /*$user->conteudos()->create([
         'titulo' => 'Conteudo Titulo 3',
         'texto' => 'Aqui é o conteudo do Titulo 3',

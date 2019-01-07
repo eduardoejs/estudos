@@ -35,6 +35,8 @@ export default {
       {"headers": {"authorization":"Bearer " + this.$store.getters.getToken}}).then(response => {
         if(response.data.status){
           console.log(response.data.conteudos)
+          this.conteudo = {titulo:'', texto:'', link:'', imagem:''}
+          this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
         }
       }).catch(e => {
         console.log(e)

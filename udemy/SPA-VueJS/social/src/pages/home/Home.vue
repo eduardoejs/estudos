@@ -27,7 +27,7 @@
       <publicar-conteudo-vue idTextarea="textarea1" />
 
 
-      <card-conteudo-vue v-for="item in this.conteudos" :key="item.id"
+      <card-conteudo-vue v-for="item in listaConteudos" :key="item.id"
         :perfil="item.user.imagem"
         :nome="item.user.name"
         :data="item.data">
@@ -57,8 +57,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      usuario:false,
-      conteudos:[]
+      usuario:false
     }
   },
   created(){
@@ -70,7 +69,8 @@ export default {
       .then(response => {
         console.log(response)
         if(response.data.status){
-          this.conteudos = response.data.conteudos.data
+          //this.conteudos = response.data.conteudos.data
+          this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
         }
 
       })
@@ -89,6 +89,11 @@ export default {
     PublicarConteudoVue,
     CardMenuVue,
     GridVue
+  },
+  computed:{
+    listaConteudos(){
+      return this.$store.getters.getConteudoLinhaTempo
+    }
   }
 }
 </script>
