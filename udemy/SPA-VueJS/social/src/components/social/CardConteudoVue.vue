@@ -31,12 +31,11 @@ import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'CardConteudoVue',
-  props: ['id', 'perfil', 'nome', 'data'],
+  props: ['id', 'totalcurtidas', 'curtiuconteudo', 'perfil', 'nome', 'data'],
   data () {
     return {
-      curtiu:'favorite_border',
-      totalCurtidas:0
-
+      curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
+      totalCurtidas:this.totalcurtidas
     }
   },
   components:{
@@ -50,6 +49,7 @@ export default {
       .then(response => {
         if(response.status){
           this.totalCurtidas = response.data.curtidas
+          this.$store.commit('setConteudoLinhaTempo',response.data.lista.conteudos.data)
           if(this.curtiu == 'favorite_border'){
             this.curtiu = 'favorite'
           }else{
