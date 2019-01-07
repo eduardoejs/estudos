@@ -26,7 +26,6 @@
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1" />
 
-
       <card-conteudo-vue v-for="item in listaConteudos" :key="item.id"
         :perfil="item.user.imagem"
         :nome="item.user.name"
@@ -35,7 +34,8 @@
         <card-conteudo-detalhe-vue
           :imagem="item.imagem"
           :titulo="item.titulo"
-          :texto="item.texto">
+          :texto="item.texto"
+          :link="item.link" >
         </card-conteudo-detalhe-vue>
       </card-conteudo-vue>
     </span>

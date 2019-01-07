@@ -123,3 +123,4 @@ composer update -> dentro da pasta webservice
   Aula 67: Corrigindo erro no cadastro de perfil
   Aula 68: Publicando Conteudo
   Aula 69: Listando Conteudo com Vuex
+  Aula 70: Validação e Lógica para Exibir Conteudos

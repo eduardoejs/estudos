@@ -37,6 +37,15 @@ export default {
           console.log(response.data.conteudos)
           this.conteudo = {titulo:'', texto:'', link:'', imagem:''}
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
+        }else if(response.data.status == false && response.data.validacao){
+          //erros de validacao
+          let errors = '';
+
+          //converte para um objeto de valores o que vem do response.data
+          for(let error of Object.values(response.data.erros)){
+            errors += error + " "
+          }
+          alert(errors)
         }
       }).catch(e => {
         console.log(e)
