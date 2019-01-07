@@ -120,3 +120,4 @@ composer update -> dentro da pasta webservice
   Aula 64: Centralizando o Sistema de Login
   Aula 65: Otimizando o acesso aos dados do usuario
   Aula 66: Listando os conteudos
+  Aula 67: Corrigindo erro no cadastro de perfil
