@@ -24,7 +24,7 @@ class UsuarioController extends Controller
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = auth()->user();
-            $user->imagem = asset($user->imagem); //retorno a url da imagem com o dominio do servidor
+            //$user->imagem = asset($user->imagem); //retorno a url da imagem com o dominio do servidor
             $user->token = $user->createToken($user->email)->accessToken;
             return ['status' => true, 'usuario' => $user];
         }
@@ -56,7 +56,7 @@ class UsuarioController extends Controller
 
         //criando e retornando token do usuario
         $user->token = $user->createToken($user->email)->accessToken;
-        $user->imagem = asset($user->imagem);
+        //$user->imagem = asset($user->imagem);
 
         return ['status' => true, 'usuario' => $user];
     }
@@ -163,7 +163,7 @@ class UsuarioController extends Controller
 
         $user->save();
 
-        $user->imagem = asset($user->imagem);//retorno a url da imagem com o dominio do servidor
+        //$user->imagem = asset($user->imagem);//retorno a url da imagem com o dominio do servidor
         $user->token = $user->createToken($user->email)->accessToken;
         return ['status' => true, 'usuario' => $user];
     }

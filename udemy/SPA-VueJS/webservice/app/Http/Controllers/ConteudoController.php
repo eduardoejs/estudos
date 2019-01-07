@@ -24,4 +24,10 @@ class ConteudoController extends Controller
 
         return ['status' => true, 'conteudos' => $user->conteudos];
     }
+
+    public function listar(Request $request)
+    {
+        $conteudos = Conteudo::with('user')->orderBy('data', 'DESC')->paginate(5);
+        return ['status' => true, 'conteudos' => $conteudos];
+    }
 }

@@ -26,15 +26,16 @@
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1" />
 
-      <card-conteudo-vue
-        perfil="https://materializecss.com/images/yuna.jpg"
-        nome="Maria Silva"
-        data="18/12/2018 09:45">
+
+      <card-conteudo-vue v-for="item in this.conteudos" :key="item.id"
+        :perfil="item.user.imagem"
+        :nome="item.user.name"
+        :data="item.data">
 
         <card-conteudo-detalhe-vue
-          imagem="https://materializecss.com/images/sample-1.jpg"
-          titulo="Card Title Test"
-          texto="I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.">
+          :imagem="item.imagem"
+          :titulo="item.titulo"
+          :texto="item.texto">
         </card-conteudo-detalhe-vue>
       </card-conteudo-vue>
     </span>
@@ -56,13 +57,29 @@ export default {
   name: 'Home',
   data () {
     return {
-      usuario:false
+      usuario:false,
+      conteudos:[]
     }
   },
   created(){
     let usuario = this.$store.getters.getUsuario
     if(usuario){
       this.usuario = this.$store.getters.getUsuario
+
+      this.$http.get(this.$urlAPI + 'conteudo/listar', {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+      .then(response => {
+        console.log(response)
+        if(response.data.status){
+          this.conteudos = response.data.conteudos.data
+        }
+
+      })
+      .catch(e => {
+        //this.errors.push(e)
+        console.log(e)
+        alert('Tente novamente mais tarde!')
+      })
+
     }
   },
   components:{

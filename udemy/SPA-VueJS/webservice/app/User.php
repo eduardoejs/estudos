@@ -51,4 +51,10 @@ class User extends Authenticatable
         //do Laravel. Ver documentacao: (modelo a ser relacionado, nome da tabela, foreign modelo, foreign modelo a ser relacionado)
         return $this->belongsToMany('App\User', 'amigos', 'user_id', 'amigo_id');
     }
+
+    //mutators laravel
+    public function getImagemAttribute($value)
+    {
+        return asset($value);
+    }
 }
