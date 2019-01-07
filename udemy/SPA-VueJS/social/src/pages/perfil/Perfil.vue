@@ -48,9 +48,9 @@ export default {
     }
   },
   created(){
-    let usuario = sessionStorage.getItem('usuario')
+    let usuario = this.$store.getters.getUsuario
     if(usuario){
-      this.usuario = JSON.parse(usuario)
+      this.usuario = this.$store.getters.getUsuario
       this.name = this.usuario.name
       this.email = this.usuario.email
     }
@@ -83,7 +83,7 @@ export default {
             imagem: this.imagem,
             password: this.password,
             password_confirmation: this.password_confirmation,
-          }, {"headers":{"authorization":"Bearer "+this.usuario.token}})
+          }, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
 
         //console.log(response)
@@ -92,6 +92,7 @@ export default {
           //se existir um token no response.data -> Login com sucesso
           console.log(response.data)
           this.usuario = response.data.usuario
+          this.$store.commit('setUsuario',response.data.usuario)
           sessionStorage.setItem('usuario',JSON.stringify(this.usuario))
           alert('Perfil atualizado!')
 

@@ -24,7 +24,7 @@
     </span>
 
     <span slot="conteudo">
-      <publicar-conteudo-vue idTextarea="textarea1" :usuario="usuario" />
+      <publicar-conteudo-vue idTextarea="textarea1" />
 
       <card-conteudo-vue
         perfil="https://materializecss.com/images/yuna.jpg"
@@ -60,9 +60,9 @@ export default {
     }
   },
   created(){
-    let usuario = sessionStorage.getItem('usuario')
+    let usuario = this.$store.getters.getUsuario
     if(usuario){
-      this.usuario = JSON.parse(usuario)
+      this.usuario = this.$store.getters.getUsuario
     }
   },
   components:{

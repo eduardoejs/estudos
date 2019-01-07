@@ -118,3 +118,4 @@ composer update -> dentro da pasta webservice
   Aula 63: Introdução ao Vuex
     npm install vuex --save
   Aula 64: Centralizando o Sistema de Login
+  Aula 65: Otimizando o acesso aos dados do usuario

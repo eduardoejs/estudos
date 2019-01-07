@@ -19,7 +19,7 @@ import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'PublicarConteudoVue',
-  props: ['idTextarea', 'usuario'],
+  props: ['idTextarea'],
   data () {
     return {
       conteudo:{titulo:'', texto:'', link:'', imagem:''}
@@ -32,7 +32,7 @@ export default {
     adicionaConteudo(){
       console.log(this.conteudo)
       this.$http.post(this.$urlAPI + 'conteudo/adicionar', this.conteudo /*se ocorrer erro: titulo: this.conteudo.titulo, ...*/,
-      {"headers": {"authorization":"Bearer " + this.usuario.token}}).then(response => {
+      {"headers": {"authorization":"Bearer " + this.$store.getters.getToken}}).then(response => {
         if(response.data.status){
           console.log(response.data.conteudos)
         }
