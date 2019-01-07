@@ -125,3 +125,4 @@ composer update -> dentro da pasta webservice
   Aula 69: Listando Conteudo com Vuex
   Aula 70: Validação e Lógica para Exibir Conteudos
   Aula 71: Iniciando o sistema de curtir
+  Aula 72: Curtindo o conteudo
