@@ -25,8 +25,8 @@ Route::middleware('auth:api')->get('/conteudo/listar', 'ConteudoController@lista
 Route::middleware('auth:api')->put('/conteudo/curtir/{id}', 'ConteudoController@curtir');
 
 Route::get('/testes', function(){
-    //$user = User::find(1);
-    //$user2 = User::find(2);
+    $user = User::find(2);
+    $user2 = User::find(7);
 
     /*$conteudos = Conteudo::all();
     foreach ($conteudos as $key => $value) {
@@ -55,18 +55,17 @@ Route::get('/testes', function(){
     //return $conteudo->curtidas;
 
     //add comentarios
-    /*$conteudo = Conteudo::find(1);
+    /*$conteudo = Conteudo::find(14);
     $user->comentarios()->create([
         'conteudo_id' => $conteudo->id,
         'texto' => 'Show de bola!',
-        'data' => date('Y-m-d')
+        'data' => date('Y-m-d H:i:s')
         ]);
 
     $user2->comentarios()->create([
         'conteudo_id' => $conteudo->id,
         'texto' => 'Não gostei!',
-        'data' => date('Y-m-d')
+        'data' => date('Y-m-d H:i:s')
         ]);
     return $conteudo->comentarios;*/
-
 });

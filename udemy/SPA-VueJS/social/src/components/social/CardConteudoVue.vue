@@ -19,7 +19,7 @@
     <div class="card-action">
       <p>
         <a style="cursor:pointer" @click="curtida(id)"><i class="material-icons">{{curtiu}}</i>{{totalCurtidas}}</a>
-        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>{{totalComentarios}}</a>
+        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>{{comentarios.length}}</a>
       </p>
       <p v-if="exibirComentario" class="right-align">
         <input type="text" placeholder="Deixe seu comentário">
@@ -27,18 +27,11 @@
       </p>
       <p v-if="exibirComentario">
         <ul class="collection">
-          <li class="collection-item avatar">
+          <li class="collection-item avatar" v-for="item in comentarios" :key="item.id">
             <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
+            <span class="title">id user: {{item.user_id}} <small> - {{item.data}}</small> </span>
             <p>
-              Gostei desse conteúdo!
-            </p>
-          </li>
-          <li class="collection-item avatar">
-            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
-            <p>
-              Gostei desse conteúdo!
+              {{item.texto}}
             </p>
           </li>
           <li class="collection-item avatar">
@@ -60,12 +53,11 @@ import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'CardConteudoVue',
-  props: ['id', 'totalcurtidas', 'totalcomentarios', 'curtiuconteudo', 'perfil', 'nome', 'data'],
+  props: ['id', 'totalcurtidas', 'comentarios', 'curtiuconteudo', 'perfil', 'nome', 'data'],
   data () {
     return {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
       totalCurtidas:this.totalcurtidas,
-      totalComentarios:this.totalcomentarios,
       exibirComentario:false
     }
   },
