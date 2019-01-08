@@ -28,17 +28,10 @@
       <p v-if="exibirComentario">
         <ul class="collection">
           <li class="collection-item avatar" v-for="item in comentarios" :key="item.id">
-            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span class="title">id user: {{item.user_id}} <small> - {{item.data}}</small> </span>
+            <img :src="item.user.imagem" alt="" class="circle">
+            <span class="title">{{item.user.name}} <small> - {{item.data}}</small> </span>
             <p>
               {{item.texto}}
-            </p>
-          </li>
-          <li class="collection-item avatar">
-            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
-            <p>
-              Gostei desse conteúdo!
             </p>
           </li>
         </ul>

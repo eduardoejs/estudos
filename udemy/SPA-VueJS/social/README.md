@@ -130,3 +130,4 @@ composer update -> dentro da pasta webservice
   Aula 74: Iniciando a lógica de comentarios
   Aula 75: Quantidade de comentarios do conteudo
   Aula 76: Exibindo comentarios
+  Aula 77: Nome e Imagem do Usuário no comentario
