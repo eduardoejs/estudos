@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'amigos', 'user_id', 'amigo_id');
     }
 
-    //mutators laravel
+    //Acessors & mutators laravel
     public function getImagemAttribute($value)
     {
         return asset($value);

@@ -25,8 +25,8 @@ Route::middleware('auth:api')->get('/conteudo/listar', 'ConteudoController@lista
 Route::middleware('auth:api')->put('/conteudo/curtir/{id}', 'ConteudoController@curtir');
 
 Route::get('/testes', function(){
-    $user = User::find(2);
-    $user2 = User::find(7);
+    //$user = User::find(2);
+    //$user2 = User::find(7);
 
     /*$conteudos = Conteudo::all();
     foreach ($conteudos as $key => $value) {
