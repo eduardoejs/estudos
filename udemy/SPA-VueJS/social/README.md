@@ -134,3 +134,4 @@ composer update -> dentro da pasta webservice
   Aula 78: Formatando Data e Hora de Conteudos e Comentarios
   Aula 79: Cadastro de Comentarios
   Aula 80: Paginação com Vuejs e Laravel
+  Aula 81: Rolagem Infinita

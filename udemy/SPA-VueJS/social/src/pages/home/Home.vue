@@ -43,7 +43,12 @@
         </card-conteudo-detalhe-vue>
       </card-conteudo-vue>
 
-      <button v-if="urlProximaPagina" @click="carregaPaginacao()" class="btn blue">Mais ...</button>
+      <!--<button v-if="urlProximaPagina" @click="carregaPaginacao()" class="btn blue">Mais ...</button>-->
+
+      <div v-scroll="handleScroll">
+
+      </div>
+
     </span>
 
   </site-template>
@@ -64,7 +69,8 @@ export default {
   data () {
     return {
       usuario:false,
-      urlProximaPagina:null
+      urlProximaPagina:null,
+      pararScroll:false
     }
   },
   created(){
@@ -107,6 +113,7 @@ export default {
         if(response.data.status){
           this.$store.commit('setPaginacaoConteudoLinhaTempo',response.data.conteudos.data)
           this.urlProximaPagina = response.data.conteudos.next_page_url
+          this.pararScroll = false
         }
       })
       .catch(e => {
@@ -114,6 +121,19 @@ export default {
         console.log(e)
         alert('Tente novamente mais tarde!')
       })
+    },
+    handleScroll() {
+      //console.log(window.scrollY)
+      //console.log(document.body.clientHeight)
+
+      if(this.pararScroll){
+        return;
+      }
+
+      if(window.scrollY >= document.body.clientHeight - 1129){
+        this.pararScroll = true
+        this.carregaPaginacao()
+      }
     }
   },
   computed:{
