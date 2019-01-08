@@ -67,7 +67,7 @@ export default {
     CardMenuVue,
   },
   created(){
-    console.log('created()')
+    //console.log('created()')
     let usuario = this.$store.getters.getUsuario
     if(usuario){
       this.usuario = this.$store.getters.getUsuario

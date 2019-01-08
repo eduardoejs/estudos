@@ -42,6 +42,8 @@
           :link="item.link" >
         </card-conteudo-detalhe-vue>
       </card-conteudo-vue>
+
+      <button v-if="urlProximaPagina" @click="carregaPaginacao()" class="btn blue">Mais ...</button>
     </span>
 
   </site-template>
@@ -61,7 +63,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      usuario:false
+      usuario:false,
+      urlProximaPagina:null
     }
   },
   created(){
@@ -70,10 +73,10 @@ export default {
       this.usuario = this.$store.getters.getUsuario
       this.$http.get(this.$urlAPI + 'conteudo/listar', {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
-        console.log(response)
+        //console.log(response)
         if(response.data.status){
-          //this.conteudos = response.data.conteudos.data
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
+          this.urlProximaPagina = response.data.conteudos.next_page_url
         }
       })
       .catch(e => {
@@ -90,6 +93,28 @@ export default {
     PublicarConteudoVue,
     CardMenuVue,
     GridVue
+  },
+  methods:{
+    carregaPaginacao(){
+
+      if(!this.urlProximaPagina){
+        return;
+      }
+
+      this.$http.get(this.urlProximaPagina, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+      .then(response => {
+        //console.log(response)
+        if(response.data.status){
+          this.$store.commit('setPaginacaoConteudoLinhaTempo',response.data.conteudos.data)
+          this.urlProximaPagina = response.data.conteudos.next_page_url
+        }
+      })
+      .catch(e => {
+        //this.errors.push(e)
+        console.log(e)
+        alert('Tente novamente mais tarde!')
+      })
+    }
   },
   computed:{
     listaConteudos(){
