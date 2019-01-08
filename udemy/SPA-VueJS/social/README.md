@@ -132,3 +132,4 @@ composer update -> dentro da pasta webservice
   Aula 76: Exibindo comentarios
   Aula 77: Nome e Imagem do Usuário no comentario
   Aula 78: Formatando Data e Hora de Conteudos e Comentarios
+  Aula 79: Cadastro de Comentarios

@@ -19,11 +19,11 @@
     <div class="card-action">
       <p>
         <a style="cursor:pointer" @click="curtida(id)"><i class="material-icons">{{curtiu}}</i>{{totalCurtidas}}</a>
-        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>{{comentarios.length}}</a>
+        <a style="cursor:pointer" @click="abreComentarios()"><i class="material-icons">insert_comment</i>{{comentarios.length}}</a>
       </p>
       <p v-if="exibirComentario" class="right-align">
-        <input type="text" placeholder="Deixe seu comentário">
-        <button class="btn waves-effect waves-light orange"><i class="material-icons">send</i></button>
+        <input v-model="textoComentario" type="text" placeholder="Deixe seu comentário">
+        <button v-if="textoComentario" @click="comentar(id)" class="btn waves-effect waves-light orange"><i class="material-icons">send</i></button>
       </p>
       <p v-if="exibirComentario">
         <ul class="collection">
@@ -51,7 +51,8 @@ export default {
     return {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
       totalCurtidas:this.totalcurtidas,
-      exibirComentario:false
+      exibirComentario:false,
+      textoComentario:''
     }
   },
   components:{
@@ -80,8 +81,30 @@ export default {
         alert('Tente novamente mais tarde!')
       })
     },
-    abreComentarios(id){
+    abreComentarios(){
       this.exibirComentario = !this.exibirComentario
+    },
+    comentar(id){
+
+      if(!this.textoComentario){
+        return;
+      }
+
+      this.$http.put(this.$urlAPI+'conteudo/comentar/'+ id,{texto:this.textoComentario},
+      {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+      .then(response => {
+        if(response.status){
+          this.textoComentario = ""
+          this.$store.commit('setConteudoLinhaTempo',response.data.lista.conteudos.data)
+        }else{
+          alert(response.data.erro)
+        }
+      })
+      .catch(e => {
+        //this.errors.push(e)
+        console.log(e)
+        alert('Tente novamente mais tarde!')
+      })
     }
   }
 }

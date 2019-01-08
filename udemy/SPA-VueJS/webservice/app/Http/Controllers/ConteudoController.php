@@ -42,7 +42,7 @@ class ConteudoController extends Controller
         $user = $request->user();
         foreach ($conteudos as $key => $conteudo) {
             $conteudo->total_curtidas = $conteudo->curtidas()->count();
-            $conteudo->comentarios = $conteudo->comentarios()->with('user')->get();
+            $conteudo->comentarios = $conteudo->comentarios()->with('user')->orderBy('data', 'DESC')->get();
             $curtiu = $user->curtidas()->find($conteudo->id);
             if($curtiu){
                 $conteudo->curtiu_conteudo = true;
@@ -64,6 +64,27 @@ class ConteudoController extends Controller
             return [
                 'status' => true,
                 'curtidas' => $conteudo->curtidas()->count(),
+                'lista' => $this->listar($request)
+            ];
+        }
+
+        return ['status' => false, 'erro' => 'Conteúdo não existe'];
+    }
+
+    public function comentar($id, Request $request)
+    {
+        $conteudo = Conteudo::find($id);
+
+        if($conteudo){
+            $user = $request->user();
+            $user->comentarios()->create([
+                'conteudo_id' => $conteudo->id,
+                'texto' => $request->texto,
+                'data' => date('Y-m-d H:i:s')
+                ]);
+
+            return [
+                'status' => true,
                 'lista' => $this->listar($request)
             ];
         }
