@@ -19,7 +19,36 @@
     <div class="card-action">
       <p>
         <a style="cursor:pointer" @click="curtida(id)"><i class="material-icons">{{curtiu}}</i>{{totalCurtidas}}</a>
-        <i class="material-icons">insert_comment</i>
+        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>22</a>
+      </p>
+      <p v-if="exibirComentario" class="right-align">
+        <input type="text" placeholder="Deixe seu comentário">
+        <button class="btn waves-effect waves-light orange"><i class="material-icons">send</i></button>
+      </p>
+      <p v-if="exibirComentario">
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
+            <p>
+              Gostei desse conteúdo!
+            </p>
+          </li>
+          <li class="collection-item avatar">
+            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
+            <p>
+              Gostei desse conteúdo!
+            </p>
+          </li>
+          <li class="collection-item avatar">
+            <img src="https://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Maria da Silva <small> - 12:30 08/01/2019</small> </span>
+            <p>
+              Gostei desse conteúdo!
+            </p>
+          </li>
+        </ul>
       </p>
     </div>
   </div>
@@ -35,7 +64,8 @@ export default {
   data () {
     return {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
-      totalCurtidas:this.totalcurtidas
+      totalCurtidas:this.totalcurtidas,
+      exibirComentario:false
     }
   },
   components:{
@@ -64,6 +94,9 @@ export default {
         console.log(e)
         alert('Tente novamente mais tarde!')
       })
+    },
+    abreComentarios(id){
+      this.exibirComentario = !this.exibirComentario
     }
   }
 }
