@@ -128,3 +128,4 @@ composer update -> dentro da pasta webservice
   Aula 72: Curtindo o conteudo
   Aula 73: Finalizando o sistema de curtir
   Aula 74: Iniciando a lógica de comentarios
+  Aula 75: Quantidade de comentarios do conteudo

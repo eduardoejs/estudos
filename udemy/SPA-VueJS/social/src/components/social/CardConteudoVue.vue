@@ -19,7 +19,7 @@
     <div class="card-action">
       <p>
         <a style="cursor:pointer" @click="curtida(id)"><i class="material-icons">{{curtiu}}</i>{{totalCurtidas}}</a>
-        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>22</a>
+        <a style="cursor:pointer" @click="abreComentarios(id)"><i class="material-icons">insert_comment</i>{{totalComentarios}}</a>
       </p>
       <p v-if="exibirComentario" class="right-align">
         <input type="text" placeholder="Deixe seu comentário">
@@ -60,11 +60,12 @@ import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'CardConteudoVue',
-  props: ['id', 'totalcurtidas', 'curtiuconteudo', 'perfil', 'nome', 'data'],
+  props: ['id', 'totalcurtidas', 'totalcomentarios', 'curtiuconteudo', 'perfil', 'nome', 'data'],
   data () {
     return {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
       totalCurtidas:this.totalcurtidas,
+      totalComentarios:this.totalcomentarios,
       exibirComentario:false
     }
   },
@@ -73,7 +74,6 @@ export default {
   },
   methods:{
     curtida(id){
-      //console.log(id)
       this.$http.put(this.$urlAPI+'conteudo/curtir/'+ id,{},
       {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {

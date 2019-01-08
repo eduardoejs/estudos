@@ -29,6 +29,7 @@
       <card-conteudo-vue v-for="item in listaConteudos" :key="item.id"
         :id="item.id"
         :totalcurtidas="item.total_curtidas"
+        :totalcomentarios="item.total_comentarios"
         :curtiuconteudo="item.curtiu_conteudo"
         :perfil="item.user.imagem"
         :nome="item.user.name"
@@ -67,7 +68,6 @@ export default {
     let usuario = this.$store.getters.getUsuario
     if(usuario){
       this.usuario = this.$store.getters.getUsuario
-
       this.$http.get(this.$urlAPI + 'conteudo/listar', {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
         console.log(response)
@@ -75,14 +75,12 @@ export default {
           //this.conteudos = response.data.conteudos.data
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
         }
-
       })
       .catch(e => {
         //this.errors.push(e)
         console.log(e)
         alert('Tente novamente mais tarde!')
       })
-
     }
   },
   components:{
