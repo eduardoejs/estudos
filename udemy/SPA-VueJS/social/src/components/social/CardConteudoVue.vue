@@ -4,11 +4,13 @@
     <div class="card-content">
       <div class="row valign-wrapper">
         <grid-vue tamanho='1'>
-          <img :src="perfil" :alt="nome" class="circle responsive-img"> <!-- notice the "circle" class -->
+          <router-link :to="'/pagina/' + userid ">
+            <img :src="perfil" :alt="nome" class="circle responsive-img"> <!-- notice the "circle" class -->
+          </router-link>
         </grid-vue>
         <grid-vue tamanho='11'>
           <span class="black-text">
-            <strong>{{nome}}</strong> - <small>{{data}}</small>
+            <strong><router-link :to="'/pagina/' + userid ">{{nome}}</router-link></strong> - <small>{{data}}</small>
           </span>
         </grid-vue>
       </div>
@@ -46,7 +48,7 @@ import GridVue from '@/components/layouts/GridVue'
 
 export default {
   name: 'CardConteudoVue',
-  props: ['id', 'totalcurtidas', 'comentarios', 'curtiuconteudo', 'perfil', 'nome', 'data'],
+  props: ['id', 'totalcurtidas', 'comentarios', 'curtiuconteudo', 'perfil', 'nome', 'data', 'userid'],
   data () {
     return {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
