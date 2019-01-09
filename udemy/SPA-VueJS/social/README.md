@@ -136,3 +136,6 @@ composer update -> dentro da pasta webservice
   Aula 80: Paginação com Vuejs e Laravel
   Aula 81: Rolagem Infinita
   Aula 82: Corrigindo erro na Publicação de Conteudo
+  Aula 83: Dica com o tinker (*)
+  Aula 84: Criando Rota para Página de Usuario
+  Aula 85: Criando Rota para Página de Usuario
