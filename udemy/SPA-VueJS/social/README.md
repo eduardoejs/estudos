@@ -139,3 +139,4 @@ composer update -> dentro da pasta webservice
   Aula 83: Dica com o tinker (*)
   Aula 84: Criando Rota para Página de Usuario
   Aula 85: Criando Rota para Página de Usuario
+  Aula 86: Exibindo a imagem do dono da página
