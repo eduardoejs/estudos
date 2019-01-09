@@ -141,3 +141,5 @@ composer update -> dentro da pasta webservice
   Aula 85: Criando Rota para Página de Usuario
   Aula 86: Exibindo a imagem do dono da página
   Aula 87: Links para páginas
+  Aula 88: Aplicando um Slug na URL
+    npm install slug --save
