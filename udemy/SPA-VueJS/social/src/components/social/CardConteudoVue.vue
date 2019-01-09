@@ -19,7 +19,7 @@
     <div class="card-action">
       <p>
         <a style="cursor:pointer" @click="curtida(id)"><i class="material-icons">{{curtiu}}</i>{{totalCurtidas}}</a>
-        <a style="cursor:pointer" @click="abreComentarios()"><i class="material-icons">insert_comment</i>{{comentarios.length}}</a>
+        <a style="cursor:pointer" @click="abreComentarios()"><i class="material-icons">insert_comment</i>{{totalComentarios.length}}</a>
       </p>
       <p v-if="exibirComentario" class="right-align">
         <input v-model="textoComentario" type="text" placeholder="Deixe seu comentário">
@@ -52,7 +52,8 @@ export default {
       curtiu: this.curtiuconteudo ? 'favorite' : 'favorite_border',
       totalCurtidas:this.totalcurtidas,
       exibirComentario:false,
-      textoComentario:''
+      textoComentario:'',
+      totalComentarios:this.comentarios || []
     }
   },
   components:{
@@ -81,15 +82,10 @@ export default {
         alert('Tente novamente mais tarde!')
       })
     },
-    abreComentarios(){
-      this.exibirComentario = !this.exibirComentario
-    },
     comentar(id){
-
       if(!this.textoComentario){
         return;
       }
-
       this.$http.put(this.$urlAPI+'conteudo/comentar/'+ id,{texto:this.textoComentario},
       {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
@@ -105,6 +101,9 @@ export default {
         console.log(e)
         alert('Tente novamente mais tarde!')
       })
+    },
+    abreComentarios(){
+      this.exibirComentario = !this.exibirComentario
     }
   }
 }

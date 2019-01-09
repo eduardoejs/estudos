@@ -135,3 +135,4 @@ composer update -> dentro da pasta webservice
   Aula 79: Cadastro de Comentarios
   Aula 80: Paginação com Vuejs e Laravel
   Aula 81: Rolagem Infinita
+  Aula 82: Corrigindo erro na Publicação de Conteudo
