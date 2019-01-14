@@ -143,3 +143,8 @@ composer update -> dentro da pasta webservice
   Aula 87: Links para páginas
   Aula 88: Aplicando um Slug na URL
     npm install slug --save
+
+  **Erro ao executar npm run dev "cannot destructure property compile of 'undefined' or 'null'" -
+    npm install --save-dev webpack-dev-server@2.9.7
+
+  Aula 89: Corrigindo erros e Botao Seguir

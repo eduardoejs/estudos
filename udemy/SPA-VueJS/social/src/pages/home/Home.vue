@@ -72,7 +72,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      usuario:false,
+      usuario:{imagem:'', name:''},
       urlProximaPagina:null,
       pararScroll:false
     }
@@ -114,7 +114,7 @@ export default {
       this.$http.get(this.urlProximaPagina, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
         //console.log(response)
-        if(response.data.status){
+        if(response.data.status && this.$route.name == "Home"){
           this.$store.commit('setPaginacaoConteudoLinhaTempo',response.data.conteudos.data)
           this.urlProximaPagina = response.data.conteudos.next_page_url
           this.pararScroll = false

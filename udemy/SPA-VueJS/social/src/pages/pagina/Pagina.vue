@@ -15,6 +15,7 @@
             <router-link :to="'/pagina/' + donoPagina.id ">
               <h5>{{donoPagina.name}}</h5>
             </router-link>
+            <button @click="amigo(donoPagina.id)" class="btn">Seguir</button>
           </span>
         </grid-vue>
       </div>
@@ -85,7 +86,7 @@ export default {
       this.$http.get(this.$urlAPI + 'conteudo/pagina/listar/' + this.$route.params.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
         //console.log(response)
-        if(response.data.status){
+        if(response.data.status && this.$route.name == "Pagina"){
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
           this.urlProximaPagina = response.data.conteudos.next_page_url
           this.donoPagina = response.data.dono
@@ -107,12 +108,15 @@ export default {
     GridVue
   },
   methods:{
+    amigo(id){
+      console.log('id: ' + id)
+    },
+
     carregaPaginacao(){
 
       if(!this.urlProximaPagina){
         return;
       }
-
       this.$http.get(this.urlProximaPagina, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
         //console.log(response)
@@ -128,6 +132,7 @@ export default {
         alert('Tente novamente mais tarde!')
       })
     },
+
     handleScroll() {
       //console.log(window.scrollY)
       //console.log(document.body.clientHeight)
