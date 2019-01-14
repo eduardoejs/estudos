@@ -15,7 +15,7 @@
             <router-link :to="'/pagina/' + donoPagina.id ">
               <h5>{{donoPagina.name}}</h5>
             </router-link>
-            <button @click="amigo(donoPagina.id)" class="btn">Seguir</button>
+            <button v-if="exibeBTNSeguir" @click="amigo(donoPagina.id)" class="btn">Seguir</button>
           </span>
         </grid-vue>
       </div>
@@ -76,7 +76,8 @@ export default {
       usuario:false,
       urlProximaPagina:null,
       pararScroll:false,
-      donoPagina:{imagem:'',name:''}
+      donoPagina:{imagem:'',name:''},
+      exibeBTNSeguir:false
     }
   },
   created(){
@@ -90,6 +91,9 @@ export default {
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
           this.urlProximaPagina = response.data.conteudos.next_page_url
           this.donoPagina = response.data.dono
+          if(this.donoPagina.id != this.usuario.id){
+            this.exibeBTNSeguir = true
+          }
         }
       })
       .catch(e => {
@@ -110,6 +114,20 @@ export default {
   methods:{
     amigo(id){
       console.log('id: ' + id)
+      this.$http.post(this.$urlAPI+'usuario/amigo',{id: id},
+      {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+      .then(response => {
+        if(response.data.status){
+          console.log(response)
+        }else{
+          alert(response.data.erro)
+        }
+      })
+      .catch(e => {
+        //this.errors.push(e)
+        console.log(e)
+        alert('Tente novamente mais tarde!')
+      })
     },
 
     carregaPaginacao(){

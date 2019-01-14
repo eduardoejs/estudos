@@ -172,4 +172,16 @@ class UsuarioController extends Controller
     /*public function usuario(Request $request){
         return $request->user();
     }*/
+
+    public function amigo(Request $request)
+    {
+        $user = $request->user();
+        $amigo = User::find($request->id);
+
+        if($amigo && ($user->id != $amigo->id)) {
+            $user->amigos()->toggle($amigo);
+            return ['status' => true, 'amigos' => $user->amigos];
+        }
+        return ['status' => false, 'erro' => 'Usuário não encontrado'];
+    }
 }

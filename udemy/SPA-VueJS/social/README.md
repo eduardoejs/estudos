@@ -148,3 +148,6 @@ composer update -> dentro da pasta webservice
     npm install --save-dev webpack-dev-server@2.9.7
 
   Aula 89: Corrigindo erros e Botao Seguir
+  Aula 90: Metodo Seguir
+  Aula 91: Requisição para Seguir Amigo
+  Aula 92: Esconder o Botao Seguir
