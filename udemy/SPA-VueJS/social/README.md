@@ -151,3 +151,4 @@ composer update -> dentro da pasta webservice
   Aula 90: Metodo Seguir
   Aula 91: Requisição para Seguir Amigo
   Aula 92: Esconder o Botao Seguir
+  Aula 93: Lista de Amigos
