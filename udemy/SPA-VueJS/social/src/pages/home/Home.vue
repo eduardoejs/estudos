@@ -26,6 +26,12 @@
       -->
     </span>
 
+    <span slot="amigos">
+      <h3>Seguindo</h3>
+      <li v-for="item in amigos" :key="item.id">{{item.name}}</li>
+      <li v-if="!amigos.length">Nenhum usuário</li>
+    </span>
+
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1" />
 
@@ -74,7 +80,8 @@ export default {
     return {
       usuario:{imagem:'', name:''},
       urlProximaPagina:null,
-      pararScroll:false
+      pararScroll:false,
+      amigos:[]
     }
   },
   created(){
@@ -87,6 +94,26 @@ export default {
         if(response.data.status){
           this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
           this.urlProximaPagina = response.data.conteudos.next_page_url
+
+          /////////
+          this.$http.get(this.$urlAPI + 'usuario/lista/amigos', {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+            .then(response => {
+              //console.log(response)
+              if(response.data.status){
+                //console.log(response)
+                this.amigos = response.data.amigos
+              } else {
+                alert(reponse.data.erro)
+              }
+            })
+            .catch(e => {
+              //this.errors.push(e)
+              console.log(e)
+              alert('Tente novamente mais tarde!')
+            })
+          /////////
+
+
         }
       })
       .catch(e => {

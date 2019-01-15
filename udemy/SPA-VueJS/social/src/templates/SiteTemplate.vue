@@ -19,9 +19,7 @@
             <slot name="menu-lateral" />
 
             <card-menu-vue>
-              <h5>Amigos</h5>
-              <li>Vitor</li>
-              <li>Daiane</li>
+              <slot name="amigos" />
             </card-menu-vue>
 
           </grid-vue>

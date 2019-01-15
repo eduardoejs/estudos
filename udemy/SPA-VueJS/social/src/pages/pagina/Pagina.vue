@@ -27,6 +27,10 @@
       -->
     </span>
 
+    <span slot="amigos">
+      <h3>Seguindo</h3>
+    </span>
+
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1" />
 
