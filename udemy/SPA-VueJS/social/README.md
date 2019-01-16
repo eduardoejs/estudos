@@ -156,3 +156,5 @@ composer update -> dentro da pasta webservice
   Aula 95: Listando Amigos na Pagina
   Aula 96: Finalizando Sistema de Amigos
   Aula 97: Testando a Aplicacao
+  Aula 98: Lista de Seguidores
+  Aula 99: Lista de Seguidores

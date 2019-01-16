@@ -35,6 +35,15 @@ Route::middleware('auth:api')->put('/conteudo/pagina/curtir/{id}', 'ConteudoCont
 Route::middleware('auth:api')->put('/conteudo/pagina/comentar/{id}', 'ConteudoController@comentarPagina');
 
 Route::get('/testes', function(){
+
+    $user = User::find(1);
+    $amigos = $user->amigos()->pluck('id');
+    $amigos->push($user->id);
+
+    $conteudos = Conteudo::whereIn('user_id', $amigos)->with('user')->orderBy('data', 'DESC')->paginate(5);
+
+    dd($conteudos);
+
     //$user = User::find(2);
     //$user2 = User::find(7);
 

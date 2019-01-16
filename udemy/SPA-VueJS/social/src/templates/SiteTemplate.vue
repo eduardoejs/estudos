@@ -22,6 +22,10 @@
               <slot name="amigos" />
             </card-menu-vue>
 
+            <card-menu-vue>
+              <slot name="seguidores" />
+            </card-menu-vue>
+
           </grid-vue>
           <grid-vue tamanho='8'>
 

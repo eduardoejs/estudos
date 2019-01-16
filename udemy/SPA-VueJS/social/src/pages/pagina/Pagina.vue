@@ -35,6 +35,14 @@
       <li v-if="!amigos.length">Nenhum usuário</li>
     </span>
 
+    <span slot="seguidores">
+      <h3>Seguidores</h3>
+      <router-link v-for="item in seguidores" :key="item.id" :to="'/pagina/' + item.id +'/' + $slug(item.name, {lower: true})">
+        <li>{{item.name}}</li>
+      </router-link>
+      <li v-if="!seguidores.length">Nenhum usuário</li>
+    </span>
+
     <span slot="conteudo">
       <publicar-conteudo-vue idTextarea="textarea1" />
 
@@ -88,6 +96,7 @@ export default {
       exibeBTNSeguir:false,
       amigos:[],
       amigosLogado:[],
+      seguidores:[],
       textoBTN:'Seguir'
     }
   },
@@ -130,6 +139,7 @@ export default {
                 if(response.data.status){
                   //console.log(response)
                   this.amigos = response.data.amigos
+                  this.seguidores = response.data.seguidores
                   this.amigosLogado = response.data.amigosLogado
                   this.isAmigo()
                 } else {
@@ -171,6 +181,7 @@ export default {
         if(response.data.status){
           //console.log(response)
           this.amigosLogado = response.data.amigos
+          this.seguidores = response.data.seguidores
           this.isAmigo()
         }else{
           alert(response.data.erro)

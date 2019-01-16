@@ -52,6 +52,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'amigos', 'user_id', 'amigo_id');
     }
 
+    public function seguidores()
+    {
+        //passagem de parametros na definicao do relacionamento, observar que não foi seguido o padrão
+        //do Laravel. Ver documentacao: (modelo a ser relacionado, nome da tabela, foreign modelo, foreign modelo a ser relacionado)
+        return $this->belongsToMany('App\User', 'amigos', 'amigo_id', 'user_id');
+    }
+
     //Acessors & mutators laravel
     public function getImagemAttribute($value)
     {

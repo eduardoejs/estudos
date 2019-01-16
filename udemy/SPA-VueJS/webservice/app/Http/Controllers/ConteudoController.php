@@ -38,9 +38,11 @@ class ConteudoController extends Controller
 
     public function listar(Request $request)
     {
-        $conteudos = Conteudo::with('user')->orderBy('data', 'DESC')->paginate(5);
-
         $user = $request->user();
+        $amigos = $user->amigos()->pluck('id'); //retorna um array só com os IDs dos usuarios
+        $amigos->push($user->id); //adiciona ao array o ID do usuario logado
+        $conteudos = Conteudo::whereIn('user_id', $amigos)->with('user')->orderBy('data', 'DESC')->paginate(5);
+
         foreach ($conteudos as $key => $conteudo) {
             $conteudo->total_curtidas = $conteudo->curtidas()->count();
             $conteudo->comentarios = $conteudo->comentarios()->with('user')->orderBy('data', 'DESC')->get();

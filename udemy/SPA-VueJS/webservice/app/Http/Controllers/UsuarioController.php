@@ -180,7 +180,7 @@ class UsuarioController extends Controller
 
         if($amigo && ($user->id != $amigo->id)) {
             $user->amigos()->toggle($amigo);
-            return ['status' => true, 'amigos' => $user->amigos];
+            return ['status' => true, 'amigos' => $user->amigos, 'seguidores' => $amigo->seguidores];
         }
         return ['status' => false, 'erro' => 'Usuário não encontrado'];
     }
@@ -189,7 +189,7 @@ class UsuarioController extends Controller
     {
         $user = $request->user();
         if($user){
-            return ['status' => true, 'amigos' => $user->amigos];
+            return ['status' => true, 'amigos' => $user->amigos, 'seguidores' => $user->seguidores];
         }
         return ['status' => false, 'erro' => 'Usuário não encontrado'];
     }
@@ -200,7 +200,7 @@ class UsuarioController extends Controller
         $userLogado = $request->user();
 
         if($user){
-            return ['status' => true, 'amigos' => $user->amigos, 'amigosLogado' => $userLogado->amigos];
+            return ['status' => true, 'amigos' => $user->amigos, 'amigosLogado' => $userLogado->amigos, 'seguidores' => $user->seguidores];
         }
         return ['status' => false, 'erro' => 'Usuário não encontrado'];
     }
