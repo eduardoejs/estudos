@@ -15,7 +15,7 @@
             <router-link :to="'/pagina/' + donoPagina.id ">
               <h5>{{donoPagina.name}}</h5>
             </router-link>
-            <button v-if="exibeBTNSeguir" @click="amigo(donoPagina.id)" class="btn">Seguir</button>
+            <button v-if="exibeBTNSeguir" @click="amigo(donoPagina.id)" class="btn">{{textoBTN}}</button>
           </span>
         </grid-vue>
       </div>
@@ -29,6 +29,8 @@
 
     <span slot="amigos">
       <h3>Seguindo</h3>
+      <li v-for="item in amigos" :key="item.id">{{item.name}}</li>
+      <li v-if="!amigos.length">Nenhum usuário</li>
     </span>
 
     <span slot="conteudo">
@@ -81,7 +83,10 @@ export default {
       urlProximaPagina:null,
       pararScroll:false,
       donoPagina:{imagem:'',name:''},
-      exibeBTNSeguir:false
+      exibeBTNSeguir:false,
+      amigos:[],
+      amigosLogado:[],
+      textoBTN:'Seguir'
     }
   },
   created(){
@@ -98,6 +103,27 @@ export default {
           if(this.donoPagina.id != this.usuario.id){
             this.exibeBTNSeguir = true
           }
+
+          /////////
+          this.$http.get(this.$urlAPI + 'usuario/lista/amigos/pagina/' + this.donoPagina.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+            .then(response => {
+              //console.log(response)
+              if(response.data.status){
+                //console.log(response)
+                this.amigos = response.data.amigos
+                this.amigosLogado = response.data.amigosLogado
+                this.isAmigo()
+              } else {
+                alert(reponse.data.erro)
+              }
+            })
+            .catch(e => {
+              //this.errors.push(e)
+              console.log(e)
+              alert('Tente novamente mais tarde!')
+            })
+          /////////
+
         }
       })
       .catch(e => {
@@ -116,13 +142,25 @@ export default {
     GridVue
   },
   methods:{
+    isAmigo(){
+      for(let amigo of this.amigosLogado){
+        if(amigo.id == this.donoPagina.id){
+          this.textoBTN = 'Deixar de seguir'
+          return
+        }
+      }
+      this.textoBTN = 'Seguir'
+    },
+
     amigo(id){
       console.log('id: ' + id)
       this.$http.post(this.$urlAPI+'usuario/amigo',{id: id},
       {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
       .then(response => {
         if(response.data.status){
-          console.log(response)
+          //console.log(response)
+          this.amigosLogado = response.data.amigos
+          this.isAmigo()
         }else{
           alert(response.data.erro)
         }

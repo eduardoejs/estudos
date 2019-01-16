@@ -153,3 +153,4 @@ composer update -> dentro da pasta webservice
   Aula 92: Esconder o Botao Seguir
   Aula 93: Lista de Amigos
   Aula 94: Listando Amigos na Home
+  Aula 95: Listando Amigos na Pagina
