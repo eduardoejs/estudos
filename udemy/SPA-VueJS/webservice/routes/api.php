@@ -26,8 +26,13 @@ Route::middleware('auth:api')->get('/usuario/lista/amigos/pagina/{id}', 'Usuario
 Route::middleware('auth:api')->post('/conteudo/adicionar', 'ConteudoController@adicionar');
 Route::middleware('auth:api')->get('/conteudo/listar', 'ConteudoController@listar');
 Route::middleware('auth:api')->get('/conteudo/pagina/listar/{id}', 'ConteudoController@pagina');
+
+//Para utilizar em Home
 Route::middleware('auth:api')->put('/conteudo/curtir/{id}', 'ConteudoController@curtir');
 Route::middleware('auth:api')->put('/conteudo/comentar/{id}', 'ConteudoController@comentar');
+//Para utilizar em Pagina
+Route::middleware('auth:api')->put('/conteudo/pagina/curtir/{id}', 'ConteudoController@curtirPagina');
+Route::middleware('auth:api')->put('/conteudo/pagina/comentar/{id}', 'ConteudoController@comentarPagina');
 
 Route::get('/testes', function(){
     //$user = User::find(2);

@@ -72,6 +72,23 @@ class ConteudoController extends Controller
         return ['status' => false, 'erro' => 'Conteúdo não existe'];
     }
 
+    public function curtirPagina($id, Request $request)
+    {
+        $conteudo = Conteudo::find($id);
+
+        if($conteudo){
+            $user = $request->user();
+            $user->curtidas()->toggle($conteudo->id);
+            return [
+                'status' => true,
+                'curtidas' => $conteudo->curtidas()->count(),
+                'lista' => $this->pagina($conteudo->user_id, $request)
+            ];
+        }
+
+        return ['status' => false, 'erro' => 'Conteúdo não existe'];
+    }
+
     public function comentar($id, Request $request)
     {
         $conteudo = Conteudo::find($id);
@@ -87,6 +104,27 @@ class ConteudoController extends Controller
             return [
                 'status' => true,
                 'lista' => $this->listar($request)
+            ];
+        }
+
+        return ['status' => false, 'erro' => 'Conteúdo não existe'];
+    }
+
+    public function comentarPagina($id, Request $request)
+    {
+        $conteudo = Conteudo::find($id);
+
+        if($conteudo){
+            $user = $request->user();
+            $user->comentarios()->create([
+                'conteudo_id' => $conteudo->id,
+                'texto' => $request->texto,
+                'data' => date('Y-m-d H:i:s')
+                ]);
+
+            return [
+                'status' => true,
+                'lista' => $this->pagina($conteudo->user_id, $request)
             ];
         }
 
