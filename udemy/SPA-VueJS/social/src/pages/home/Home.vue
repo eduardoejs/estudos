@@ -28,7 +28,9 @@
 
     <span slot="amigos">
       <h3>Seguindo</h3>
-      <li v-for="item in amigos" :key="item.id">{{item.name}}</li>
+      <router-link v-for="item in amigos" :key="item.id" :to="'/pagina/' + item.id +'/' + $slug(item.name, {lower: true})">
+        <li>{{item.name}}</li>
+      </router-link>
       <li v-if="!amigos.length">Nenhum usuário</li>
     </span>
 

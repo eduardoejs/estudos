@@ -6,13 +6,13 @@
       <card-menu-vue>
       <div class="row valign-wrapper">
         <grid-vue tamanho='4'>
-          <router-link :to="'/pagina/' + donoPagina.id ">
+          <router-link :to="'/pagina/' + donoPagina.id +'/' + $slug(donoPagina.name, {lower: true})">
             <img :src="donoPagina.imagem" :alt="donoPagina.name" class="circle responsive-img"> <!-- notice the "circle" class -->
           </router-link>
         </grid-vue>
         <grid-vue tamanho='8'>
           <span class="black-text">
-            <router-link :to="'/pagina/' + donoPagina.id ">
+            <router-link :to="'/pagina/' + donoPagina.id +'/' + $slug(donoPagina.name, {lower: true})">
               <h5>{{donoPagina.name}}</h5>
             </router-link>
             <button v-if="exibeBTNSeguir" @click="amigo(donoPagina.id)" class="btn">{{textoBTN}}</button>
@@ -29,7 +29,9 @@
 
     <span slot="amigos">
       <h3>Seguindo</h3>
-      <li v-for="item in amigos" :key="item.id">{{item.name}}</li>
+      <router-link v-for="item in amigos" :key="item.id" :to="'/pagina/' + item.id +'/' + $slug(item.name, {lower: true})">
+        <li>{{item.name}}</li>
+      </router-link>
       <li v-if="!amigos.length">Nenhum usuário</li>
     </span>
 
@@ -90,48 +92,7 @@ export default {
     }
   },
   created(){
-    let usuario = this.$store.getters.getUsuario
-    if(usuario){
-      this.usuario = this.$store.getters.getUsuario
-      this.$http.get(this.$urlAPI + 'conteudo/pagina/listar/' + this.$route.params.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
-      .then(response => {
-        //console.log(response)
-        if(response.data.status && this.$route.name == "Pagina"){
-          this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
-          this.urlProximaPagina = response.data.conteudos.next_page_url
-          this.donoPagina = response.data.dono
-          if(this.donoPagina.id != this.usuario.id){
-            this.exibeBTNSeguir = true
-          }
-
-          /////////
-          this.$http.get(this.$urlAPI + 'usuario/lista/amigos/pagina/' + this.donoPagina.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
-            .then(response => {
-              //console.log(response)
-              if(response.data.status){
-                //console.log(response)
-                this.amigos = response.data.amigos
-                this.amigosLogado = response.data.amigosLogado
-                this.isAmigo()
-              } else {
-                alert(reponse.data.erro)
-              }
-            })
-            .catch(e => {
-              //this.errors.push(e)
-              console.log(e)
-              alert('Tente novamente mais tarde!')
-            })
-          /////////
-
-        }
-      })
-      .catch(e => {
-        //this.errors.push(e)
-        console.log(e)
-        alert('Tente novamente mais tarde!')
-      })
-    }
+    this.atualizaPagina()
   },
   components:{
     SiteTemplate,
@@ -141,7 +102,57 @@ export default {
     CardMenuVue,
     GridVue
   },
+  watch:{
+    '$route':'atualizaPagina'
+  },
   methods:{
+    atualizaPagina(){
+      let usuario = this.$store.getters.getUsuario
+      if(usuario){
+        this.usuario = this.$store.getters.getUsuario
+        this.$http.get(this.$urlAPI + 'conteudo/pagina/listar/' + this.$route.params.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+        .then(response => {
+          //console.log(response)
+          if(response.data.status && this.$route.name == "Pagina"){
+            this.$store.commit('setConteudoLinhaTempo',response.data.conteudos.data)
+            this.urlProximaPagina = response.data.conteudos.next_page_url
+            this.donoPagina = response.data.dono
+            if(this.donoPagina.id != this.usuario.id){
+              this.exibeBTNSeguir = true
+            }else{
+              this.exibeBTNSeguir = false
+            }
+
+            /////////
+            this.$http.get(this.$urlAPI + 'usuario/lista/amigos/pagina/' + this.donoPagina.id, {"headers":{"authorization":"Bearer "+this.$store.getters.getToken}})
+              .then(response => {
+                //console.log(response)
+                if(response.data.status){
+                  //console.log(response)
+                  this.amigos = response.data.amigos
+                  this.amigosLogado = response.data.amigosLogado
+                  this.isAmigo()
+                } else {
+                  alert(reponse.data.erro)
+                }
+              })
+              .catch(e => {
+                //this.errors.push(e)
+                console.log(e)
+                alert('Tente novamente mais tarde!')
+              })
+            /////////
+
+          }
+        })
+        .catch(e => {
+          //this.errors.push(e)
+          console.log(e)
+          alert('Tente novamente mais tarde!')
+        })
+      }
+    },
+
     isAmigo(){
       for(let amigo of this.amigosLogado){
         if(amigo.id == this.donoPagina.id){
