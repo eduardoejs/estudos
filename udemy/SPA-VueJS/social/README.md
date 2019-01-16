@@ -46,6 +46,17 @@ composer update -> dentro da pasta webservice
  Aula 21: Organizando Navbar e links de navegação
  Aula 22: URLs amigáveis no Vue JS
     https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+
+    .htaccess na pasta dist
+    <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteBase /
+      RewriteRule ^index\.html$ - [L]
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule . /index.html [L]
+    </IfModule>
+
  Aula 23: Formularios de Login e Cadastro de usuarios
  Aula 24: URL amigavel para Formularios de Login e Cadastro de usuarios
  Aula 25: Instalando o Laravel - API
@@ -158,3 +169,8 @@ composer update -> dentro da pasta webservice
   Aula 97: Testando a Aplicacao
   Aula 98: Lista de Seguidores
   Aula 99: Lista de Seguidores
+  Aula 100: Consideracoes finais
+      Criar uma página para:
+    - Listar todos os conteudos dos usuarios para poder segui-los
+    - Trazer os conteudos mais curtidos ou comentados
+    - Buscar por usuarios/conteudos
